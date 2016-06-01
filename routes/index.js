@@ -15,5 +15,24 @@ router.post('/douyu', function (req, res, next) {
     recive.reciveData(req.body,'douyu');
     res.json({msg:'success'})
 });
-
+router.post('/huya', function (req, res, next) {
+    // console.log(req.body);
+    recive.reciveData(req.body,'huya');
+    res.json({msg:'success'})
+});
+router.post('/bilibli', function (req, res, next) {
+    // console.log(req.body);
+    recive.reciveData(req.body,'bilibli');
+    res.json({msg:'success'})
+});
+router.post('/panda', function (req, res, next) {
+    // console.log(req.body);
+    recive.reciveData(req.body,'panda');
+    res.json({msg:'success'})
+});
+router.post('/yy', function (req, res, next) {
+    // console.log(req.body);
+    recive.reciveData(req.body,'yy');
+    res.json({msg:'success'})
+});
 module.exports = router;

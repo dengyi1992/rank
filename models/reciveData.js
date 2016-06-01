@@ -5,10 +5,10 @@ var mysql = require('mysql');
 var EventEmitter = require('events').EventEmitter;
 var myEvents = new EventEmitter();
 var conn = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'dengyi',
-    database: 'douyu',
+    host: 'rm-2zee5eu70c10m7ubu.mysql.rds.aliyuncs.com',
+    user: 'dataguiding',
+    password: 'redhat2016',
+    database: 'rank',
     port: 3306
 });
 exports.reciveData = function (data, tablename) {
