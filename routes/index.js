@@ -1,5 +1,7 @@
 var express = require('express');
 var recive = require('../models/reciveData');
+var getTags = require("../models/getTags.js");
+var TagTimer = require("../controler/TagUtils.js");
 var router = express.Router();
 
 /* GET home page. */
@@ -12,27 +14,34 @@ router.get('/', function (req, res, next) {
  */
 router.post('/douyu', function (req, res, next) {
     // console.log(req.body);
-    recive.reciveData(req.body,'douyu');
-    res.json({msg:'success'})
+    recive.reciveData(req.body, 'douyu');
+    res.json({msg: 'success'})
 });
 router.post('/huya', function (req, res, next) {
     // console.log(req.body);
-    recive.reciveData(req.body,'huya');
-    res.json({msg:'success'})
+    recive.reciveData(req.body, 'huya');
+    res.json({msg: 'success'})
 });
 router.post('/bilibli', function (req, res, next) {
     // console.log(req.body);
-    recive.reciveData(req.body,'bilibli');
-    res.json({msg:'success'})
+    recive.reciveData(req.body, 'bilibli');
+    res.json({msg: 'success'})
 });
 router.post('/panda', function (req, res, next) {
     // console.log(req.body);
-    recive.reciveData(req.body,'panda');
-    res.json({msg:'success'})
+    recive.reciveData(req.body, 'panda');
+    res.json({msg: 'success'})
 });
 router.post('/yy', function (req, res, next) {
     // console.log(req.body);
-    recive.reciveData(req.body,'yy');
-    res.json({msg:'success'})
+    recive.reciveData(req.body, 'yy');
+    res.json({msg: 'success'})
+});
+router.get('/getAllTag', function (req, res, next) {
+    if (TagTimer.TagTimer()){
+        res.json({msg: 'success,开始...'})
+    }else {
+        res.json({msg: '还有个任务在进行中'})
+    }
 });
 module.exports = router;
