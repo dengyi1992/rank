@@ -17,7 +17,7 @@ myEvents.on('insertdata', function (data, tablename) {
             console.log(err)
         }
     });
-    var insertSql = 'INSERT INTO ' + tablename + ' (room_id, room_name, owner_uid, nickname, online, game_name, fans, tags,score,face) VALUES (?,?,?,?,?,?,?,?,?)';
+    var insertSql = 'INSERT INTO ' + tablename + ' (room_id, room_name, owner_uid, nickname, online, game_name, fans, tags,score,face) VALUES (?,?,?,?,?,?,?,?,?,?)';
 
     for (var i = 0; i < data.data.length; i++) {
 
