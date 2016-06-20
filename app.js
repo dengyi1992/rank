@@ -78,6 +78,7 @@ var optionsMain = {
     url: 'http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/mainInfo'
 };
 schedule.scheduleJob(rule, function () {
+    console.log("----------------------------------");
     request(optionsDay, function (error, response, body) {
             if (error) {
                 return console.log(error)
