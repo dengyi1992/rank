@@ -47,6 +47,16 @@ router.post('/longzhu', function (req, res, next) {
     recive.reciveData(req.body, 'longzhu');
     res.json({msg: 'success'})
 });
+router.post('/huajiao', function (req, res, next) {
+    // console.log(req.body);
+    recive.reciveData(req.body, 'huajiao');
+    res.json({msg: 'success'})
+});
+router.post('/laifeng', function (req, res, next) {
+    // console.log(req.body);
+    recive.reciveData(req.body, 'laifeng');
+    res.json({msg: 'success'})
+});
 router.get('/getAllTag', function (req, res, next) {
     if (TagTimer.TagTimer()){
         res.json({msg: 'success,开始...'})
