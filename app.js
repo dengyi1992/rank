@@ -60,31 +60,31 @@ app.use(function (err, req, res, next) {
         error: {}
     });
 });
-rule.hour = times;
-times.push(0);
-var optionsDay = {
-    method: 'GET',
-    encoding: null,
-    url: 'http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/crawlerDayInfo'
-};
-var optionsMonth = {
-    method: 'GET',
-    encoding: null,
-    url: 'http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/crawlerDayInfo'
-};
-schedule.scheduleJob(rule, function () {
-    request(optionsDay, function (error, response, body) {
-            if (error) {
-                return console.log(error)
-            }
-        }
-    );
-    request(optionsMonth, function (error, response, body) {
-            if (error) {
-                return console.log(error)
-            }
-        }
-    )
-});
+// rule.hour = times;
+// times.push(0);
+// var optionsDay = {
+//     method: 'GET',
+//     encoding: null,
+//     url: 'http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/crawlerDayInfo'
+// };
+// var optionsMonth = {
+//     method: 'GET',
+//     encoding: null,
+//     url: 'http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/crawlerDayInfo'
+// };
+// schedule.scheduleJob(rule, function () {
+//     request(optionsDay, function (error, response, body) {
+//             if (error) {
+//                 return console.log(error)
+//             }
+//         }
+//     );
+//     request(optionsMonth, function (error, response, body) {
+//             if (error) {
+//                 return console.log(error)
+//             }
+//         }
+//     )
+// });
 
 module.exports = app;
