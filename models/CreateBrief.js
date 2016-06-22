@@ -20,9 +20,9 @@ exports.startCreate = function () {
         i++;
     });
 };
-exports.test = function () {
-    myEvents.emit('RankMonth');
-};
+// exports.test = function () {
+//     myEvents.emit('RankMonth');
+// };
 
 myEvents.on('createRank', function () {
     UtilsCreateBriefTable.CreateBriefRank();
@@ -46,10 +46,11 @@ myEvents.on('MonthTable', function () {
     schedule.scheduleJob(rule, function () {
         if (k >= tables.length) {
             k = 0;
+            myEvents.emit('RankMonth');
             this.cancel();
             return;
         }
-        UtilsCreateBriefTable.copyMonthTable(tables[k], TimeUtils.GetYesterdayYearMonth(), TimeUtils.GetYesterdayDay()+1);
+        UtilsCreateBriefTable.copyMonthTable(tables[k], TimeUtils.GetYesterdayYearMonth(), TimeUtils.GetYesterdayDay());
         k++;
     });
 });

@@ -28,7 +28,7 @@ exports.CreateBrief = function (tablename) {
     myEvents.emit('createBrief', tablename);
 };
 myEvents.on('createBrief', function (tablename) {
-    var getCrruentTime = TimeUtils.GetCrruentTime();
+    var getCrruentTime = TimeUtils.GetYesterday();
     var selectTable = 'orignal_' + tablename + '_' + getCrruentTime;
     var createTable = 'brief_' + tablename + '_' + getCrruentTime;
 
@@ -43,7 +43,7 @@ myEvents.on('createBrief', function (tablename) {
     });
 });
 exports.CreateBriefRank = function () {
-    var tablename = 'brief_rank_' + TimeUtils.GetCrruentTime();
+    var tablename = 'brief_rank_' + TimeUtils.GetYesterday();
     var sql = 'CREATE TABLE IF NOT EXISTS ' + tablename + ' LIKE brief_dy ; ';
     conn.query(sql, function (err, rows, field) {
         if (err) {
@@ -53,8 +53,8 @@ exports.CreateBriefRank = function () {
 
 };
 exports.copyTableToRank = function (tablename) {
-    var ToTablename = 'brief_rank_' + TimeUtils.GetCrruentTime();
-    var selectTable = 'brief_' + tablename + '_' + TimeUtils.GetCrruentTime();
+    var ToTablename = 'brief_rank_' + TimeUtils.GetYesterday();
+    var selectTable = 'brief_' + tablename + '_' + TimeUtils.GetYesterday();
     var sql = 'insert into ' + ToTablename + ' select * from ' + selectTable;
     conn.query(sql, function (err, rows, field) {
         if (err) {
@@ -74,7 +74,7 @@ exports.createMonthTable = function (tablename, month) {
 };
 exports.copyMonthTable = function (tablename, month, day) {
     var ToTablename = 'brief_' + tablename + '_' + month;
-    var selectTable = 'brief_' + tablename + '_' + TimeUtils.GetCrruentTime();
+    var selectTable = 'brief_' + tablename + '_' + TimeUtils.GetYesterday();
     var sql = 'insert into ' + ToTablename + ' select * from ' + selectTable;
     conn.query(sql, function (err, rows, field) {
         if (err) {
@@ -83,7 +83,7 @@ exports.copyMonthTable = function (tablename, month, day) {
     });
 };
 exports.CreateBriefRankMonth=function () {
-    var tablename = 'brief_rank_' + TimeUtils.GetYesterdayYearMonth();
+    var tablename = 'brief_rank_' + TimeUtils.GetTodayYearMonth();
     var sql = 'CREATE TABLE IF NOT EXISTS ' + tablename + ' LIKE brief_dy ; ';
     conn.query(sql, function (err, rows, field) {
         if (err) {
@@ -93,7 +93,7 @@ exports.CreateBriefRankMonth=function () {
 };
 exports.copyTableToRankMonth = function () {
     var ToTablename = 'brief_rank_' + TimeUtils.GetYesterdayYearMonth();
-    var selectTable = 'brief_rank_' + TimeUtils.GetCrruentTime();
+    var selectTable = 'brief_rank_' + TimeUtils.GetYesterdayDay();
     var sql = 'insert into ' + ToTablename + ' select * from ' + selectTable+' order by score desc limit 0,500';
     conn.query(sql, function (err, rows, field) {
         if (err) {

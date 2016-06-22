@@ -68,9 +68,9 @@ router.get('/getAllTag', function (req, res, next) {
     }
 });
 router.get('/test',function (req, res, next) {
-    CreateBrief.test();
+    // CreateBrief.test();
 });
 router.get('/test1',function (req, res, next) {
-    CreateBrief.startCreate();
+    // CreateBrief.startCreate();
 });
 module.exports = router;

@@ -48,6 +48,14 @@ exports.GetYesterdayYearMonth = function () {
     return yesterday.getFullYear() + '_' + month;
 };
 /**
+ * @return {string}
+ */
+exports.GetTodayYearMonth = function () {
+    var today = new Date();
+    var month = today.getMonth() + 1;
+    return today.getFullYear() + '_' + month;
+};
+/**
  * @return {number}
  */
 exports.GetYesterdayDay = function () {
