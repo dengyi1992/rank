@@ -45,7 +45,7 @@ exports.GetYesterdayYearMonth = function () {
     var yesterday_milliseconds = today.getTime() - 1000 * 60 * 60 * 24;
     var yesterday = new Date(yesterday_milliseconds);
     var month = yesterday.getMonth() + 1;
-    return yesterday.getFullYear + '_' + month;
+    return yesterday.getFullYear() + '_' + month;
 };
 /**
  * @return {number}
