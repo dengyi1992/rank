@@ -34,8 +34,7 @@ exports.GetYesterdayMonth = function () {
     var today = new Date();
     var yesterday_milliseconds = today.getTime() - 1000 * 60 * 60 * 24;
     var yesterday = new Date(yesterday_milliseconds);
-    var month = yesterday.getMonth() + 1;
-    return month;
+    return yesterday.getMonth() + 1;
 };
 /**
  * @return {number}
@@ -44,6 +43,5 @@ exports.GetYesterdayDay = function () {
     var today = new Date();
     var yesterday_milliseconds = today.getTime() - 1000 * 60 * 60 * 24;
     var yesterday = new Date(yesterday_milliseconds);
-    var day = yesterday.getDate();
-    return day;
+    return yesterday.getDate();
 };
