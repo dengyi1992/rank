@@ -40,7 +40,7 @@ myEvents.on('createRank', function () {
 });
 myEvents.on('MonthTable', function () {
     for (var i = 0; i < tables.length; i++) {
-        UtilsCreateBriefTable.createMonthTable(tables[i],TimeUtils.GetYesterdayMonth()+1);
+        UtilsCreateBriefTable.createMonthTable(tables[i],TimeUtils.GetYesterdayMonth());
     }
     var k = 0;
     schedule.scheduleJob(rule, function () {
