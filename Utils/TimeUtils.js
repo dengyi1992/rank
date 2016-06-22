@@ -36,6 +36,17 @@ exports.GetYesterdayMonth = function () {
     var yesterday = new Date(yesterday_milliseconds);
     return yesterday.getMonth() + 1;
 };
+
+/**
+ * @return {string}
+ */
+exports.GetYesterdayYearMonth = function () {
+    var today = new Date();
+    var yesterday_milliseconds = today.getTime() - 1000 * 60 * 60 * 24;
+    var yesterday = new Date(yesterday_milliseconds);
+    var month = yesterday.getMonth() + 1;
+    return yesterday.getFullYear + '_' + month;
+};
 /**
  * @return {number}
  */

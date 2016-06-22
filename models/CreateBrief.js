@@ -40,7 +40,7 @@ myEvents.on('createRank', function () {
 });
 myEvents.on('MonthTable', function () {
     for (var i = 0; i < tables.length; i++) {
-        UtilsCreateBriefTable.createMonthTable(tables[i],TimeUtils.GetYesterdayMonth());
+        UtilsCreateBriefTable.createMonthTable(tables[i],TimeUtils.GetYesterdayYearMonth());
     }
     var k = 0;
     schedule.scheduleJob(rule, function () {
@@ -49,7 +49,7 @@ myEvents.on('MonthTable', function () {
             this.cancel();
             return;
         }
-        UtilsCreateBriefTable.copyMonthTable(tables[k], TimeUtils.GetYesterdayMonth(), TimeUtils.GetYesterdayDay()+1);
+        UtilsCreateBriefTable.copyMonthTable(tables[k], TimeUtils.GetYesterdayYearMonth(), TimeUtils.GetYesterdayDay()+1);
         k++;
     });
 });
