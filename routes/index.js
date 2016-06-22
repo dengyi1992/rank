@@ -3,6 +3,7 @@ var recive = require('../models/reciveData');
 var getTags = require("../models/getTags.js");
 var TagTimer = require("../controler/TagUtils.js");
 var UtilsCreateBriefTable=require("../Utils/UtilsCreateBriefTable");
+var CreateBrief=require("../models/CreateBrief");
 
 var router = express.Router();
 
@@ -67,5 +68,6 @@ router.get('/getAllTag', function (req, res, next) {
     }
 });
 router.get('/test',function (req, res, next) {
+    CreateBrief.test();
 });
 module.exports = router;
