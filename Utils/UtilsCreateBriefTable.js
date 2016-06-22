@@ -82,3 +82,23 @@ exports.copyMonthTable = function (tablename, month, day) {
         }
     });
 };
+exports.CreateBriefRankMonth=function () {
+    var tablename = 'brief_rank_' + TimeUtils.GetYesterdayYearMonth();
+    var sql = 'CREATE TABLE IF NOT EXISTS ' + tablename + ' LIKE brief_dy ; ';
+    conn.query(sql, function (err, rows, field) {
+        if (err) {
+            console.log(err)
+        }
+    });
+};
+exports.copyTableToRankMonth = function () {
+    var ToTablename = 'brief_rank_' + TimeUtils.GetYesterdayYearMonth();
+    var selectTable = 'brief_rank_' + TimeUtils.GetCrruentTime();
+    var sql = 'insert into ' + ToTablename + ' select * from ' + selectTable+' order by score desc limit 0,500';
+    conn.query(sql, function (err, rows, field) {
+        if (err) {
+            console.log(err)
+        }
+    });
+
+};

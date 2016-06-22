@@ -21,7 +21,7 @@ exports.startCreate = function () {
     });
 };
 exports.test = function () {
-    myEvents.emit('MonthTable');
+    myEvents.emit('RankMonth');
 };
 
 myEvents.on('createRank', function () {
@@ -52,6 +52,10 @@ myEvents.on('MonthTable', function () {
         UtilsCreateBriefTable.copyMonthTable(tables[k], TimeUtils.GetYesterdayYearMonth(), TimeUtils.GetYesterdayDay()+1);
         k++;
     });
+});
+myEvents.on('RankMonth',function () {
+    UtilsCreateBriefTable.CreateBriefRankMonth();
+    UtilsCreateBriefTable.copyTableToRankMonth();
 });
 
 
