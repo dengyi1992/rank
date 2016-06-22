@@ -4,15 +4,9 @@
  */
 exports.GetCrruentTime = function () {
     var date = new Date();
-    var dateString = date.toLocaleDateString();
-    return dateString.replace(/\//g, "_");
-    // console.log(date.getFullYear() + '年' +
-    //     date.getMonth() + '月' +
-    //     date.getDay() + '号' +
-    //     date.getHours() + '时' +
-    //     date.getMinutes() + '分' +
-    //     date.getSeconds() + '秒'
-    // )
+    var month = date.getMonth()+1;
+    return date.getFullYear() + '_' + month + '_' + date.getDate();
+
 };
 /**
  * @return {string}
@@ -20,8 +14,7 @@ exports.GetCrruentTime = function () {
 exports.GetYesterday = function () {
     var   today=new   Date();
     var   yesterday_milliseconds=today.getTime()-1000*60*60*24;
-    var Yesterday = new Date(yesterday_milliseconds);
-    var yesterdayS = Yesterday.toDateString();
-    return yesterdayS.replace(/\//g, "_");
-
+    var yesterday = new Date(yesterday_milliseconds);
+    var month = yesterday.getMonth()+1;
+    return yesterday.getFullYear() + '_' + month + '_' + yesterday.getDate();
 };
