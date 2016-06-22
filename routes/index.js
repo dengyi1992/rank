@@ -67,6 +67,6 @@ router.get('/getAllTag', function (req, res, next) {
     }
 });
 router.get('/test',function (req, res, next) {
-    UtilsCreateBriefTable.CreateBrief('orignal_panda_2016_6_22');
+    UtilsCreateBriefTable.CreateBrief('panda');
 });
 module.exports = router;
