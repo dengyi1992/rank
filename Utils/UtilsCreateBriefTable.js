@@ -17,6 +17,7 @@ myEvents.on('createBrief', function (data, tablename) {
     '   AS SELECT  room_id ,COUNT( room_id ),room_name ,owner_uid ,nickname ,game_name ,face ,tags ,AVG( score ) AS  score ,AVG( fans ) AS  avgFans ,AVG( online ) AS  avgOnline ,MAX( fans ) AS  maxFans ,MAX( online ) AS  maxOnline FROM  ' +
     selectTable +
     ' GROUP BY  room_id ORDER BY AVG( score ) DESC LIMIT 0,500';
+    console.log(createSql);
     conn.query(createSql, function (err, rows, field) {
         if (err) {
             console.log(err)
