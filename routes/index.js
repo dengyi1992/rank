@@ -67,10 +67,10 @@ router.get('/getAllTag', function (req, res, next) {
         res.json({msg: '还有个任务在进行中'})
     }
 });
-router.get('/test',function (req, res, next) {
-    // CreateBrief.test();
-});
-router.get('/test1',function (req, res, next) {
-    // CreateBrief.startCreate();
-});
+// router.get('/test',function (req, res, next) {
+//     // CreateBrief.test();
+// });
+// router.get('/test1',function (req, res, next) {
+//     // CreateBrief.startCreate();
+// });
 module.exports = router;

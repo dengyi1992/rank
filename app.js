@@ -70,26 +70,51 @@ rule.minute = 0;
 
 
 schedule.scheduleJob(rule, function () {
-    // console.log('-----------------------临时表更新------------------------------');
-    // request('http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/crawlerDayInfo', function (error, response, body) {
-    //         if (error) {
-    //             return console.log(error)
-    //         }
-    //     }
-    // );
-    // request('http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/crawlerDayInfo', function (error, response, body) {
-    //         if (error) {
-    //             return console.log(error)
-    //         }
-    //     }
-    // );
-    // request('http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/mainInfo', function (error, response, body) {
-    //         if (error) {
-    //             return console.log(error)
-    //         }
-    //     }
-    // );
+    console.log('-----------------------临时表更新------------------------------');
     CreateBrief.startCreate();
+
+    request('http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/anchor_rank_hour_deal', function (error, response, body) {
+            if (error) {
+                return console.log(error)
+            }
+        }
+    );
+    request('http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/anchor_rank_week_deal', function (error, response, body) {
+            if (error) {
+                return console.log(error)
+            }
+        }
+    );
+    request('http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/platform_rank_hour_deal', function (error, response, body) {
+            if (error) {
+                return console.log(error)
+            }
+        }
+    );
+    request('http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/platform_rank_week_deal', function (error, response, body) {
+            if (error) {
+                return console.log(error)
+            }
+        }
+    );
+    request('http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/sort_rank_hour_deal', function (error, response, body) {
+            if (error) {
+                return console.log(error)
+            }
+        }
+    );
+    request('http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/sort_rank_week_deal', function (error, response, body) {
+            if (error) {
+                return console.log(error)
+            }
+        }
+    );
+    request('http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/mainInfo', function (error, response, body) {
+            if (error) {
+                return console.log(error)
+            }
+        }
+    );
 });
 
 module.exports = app;
