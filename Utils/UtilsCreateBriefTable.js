@@ -55,7 +55,7 @@ exports.CreateBriefRank = function () {
 };
 exports.copyTableToRank = function (tablename) {
     var ToTablename = 'brief_rank_' + TimeUtils.GetCrruentTime();
-    var selectTable = 'orignal_' + tablename + '_' + TimeUtils.GetCrruentTime();
+    var selectTable = 'brief_' + tablename + '_' + TimeUtils.GetCrruentTime();
     var sql = 'insert into ' + ToTablename + ' select * from ' + selectTable;
     conn.query(sql, function (err, rows, field) {
         if (err) {
