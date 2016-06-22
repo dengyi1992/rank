@@ -2,6 +2,8 @@ var express = require('express');
 var recive = require('../models/reciveData');
 var getTags = require("../models/getTags.js");
 var TagTimer = require("../controler/TagUtils.js");
+var UtilsCreateBriefTable=require("../Utils/UtilsCreateBriefTable");
+
 var router = express.Router();
 
 /* GET home page. */
@@ -63,5 +65,8 @@ router.get('/getAllTag', function (req, res, next) {
     }else {
         res.json({msg: '还有个任务在进行中'})
     }
+});
+router.get('/test',function (req, res, next) {
+    UtilsCreateBriefTable.CreateBrief('orignal_panda_2016_6_22');
 });
 module.exports = router;
