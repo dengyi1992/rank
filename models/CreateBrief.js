@@ -49,7 +49,7 @@ myEvents.on('MonthTable', function () {
             this.cancel();
             return;
         }
-        UtilsCreateBriefTable.copyMonthTable(tables[k], TimeUtils.GetYesterdayMonth(), TimeUtils.GetYesterdayDay+1);
+        UtilsCreateBriefTable.copyMonthTable(tables[k], TimeUtils.GetYesterdayMonth(), TimeUtils.GetYesterdayDay()+1);
         k++;
     });
 });
