@@ -74,7 +74,7 @@ exports.createMonthTable = function (tablename, month) {
 };
 exports.copyMonthTable = function (tablename, month, day) {
     var ToTablename = 'brief_' + tablename + '_' + month;
-    var selectTable = 'brief_' + tablename + '_' + TimeUtils.GetYesterday();
+    var selectTable = 'brief_' + tablename + '_' + TimeUtils.GetCrruentTime();
     var sql = 'insert into ' + ToTablename + ' select * from ' + selectTable;
     conn.query(sql, function (err, rows, field) {
         if (err) {
