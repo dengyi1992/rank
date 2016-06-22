@@ -1,5 +1,7 @@
 var schedule = require('node-schedule');
 var UtilsCreateBriefTable = require("../Utils/UtilsCreateBriefTable");
+var TimeUtils=require("../Utils/TimeUtils");
+
 var EventEmitter = require('events').EventEmitter;
 var myEvents = new EventEmitter();
 var rule = new schedule.RecurrenceRule();
@@ -28,10 +30,27 @@ myEvents.on('createRank',function () {
         if (j >= tables.length) {
             j = 0;
             this.cancel();
+            myEvents.emit('MonthTable');
             return;
         }
         UtilsCreateBriefTable.copyTableToRank(tables[j]);
         j++;
     });
 });
+myEvents.on('MonthTable',function () {
+    for(var i=0;i<tables.length;i++){
+        UtilsCreateBriefTable.createMonthTable();
+    }
+    var k=0;
+    schedule.scheduleJob(rule, function () {
+        if (k >= tables.length) {
+            k = 0;
+            this.cancel();
+            return;
+        }
+        UtilsCreateBriefTable.copyMonthTable(tables[k],TimeUtils.GetYesterdayMonth(),TimeUtils.GetYesterdayDay);
+        k++;
+    });
+});
+
 
