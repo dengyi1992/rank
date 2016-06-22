@@ -9,6 +9,8 @@ var rule = new schedule.RecurrenceRule();
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var request = require('request');
+var CreateBrief=require('./models/CreateBrief');
+
 var mypretime = 0;
 
 
@@ -87,7 +89,7 @@ schedule.scheduleJob(rule, function () {
     //         }
     //     }
     // );
-
+    CreateBrief.startCreate();
 });
 
 module.exports = app;
