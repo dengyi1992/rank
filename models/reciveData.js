@@ -6,11 +6,14 @@ var config = require("../config.js");
 var EventEmitter = require('events').EventEmitter;
 var myEvents = new EventEmitter();
 var conn = mysql.createConnection(config.db);
+var TimeUtils=require('../Utils/TimeUtils');
+
 exports.reciveData = function (data, tablename) {
         myEvents.emit('insertdata', data, tablename);
 
 };
 myEvents.on('insertdata', function (data, tablename) {
+    tablename='orignal_'+tablename+'_'+TimeUtils.GetCrruentTime();
     var sql = 'CREATE TABLE IF NOT EXISTS ' + tablename + ' LIKE dy ; ';
     conn.query(sql, function (err, rows, field) {
         if (err) {
