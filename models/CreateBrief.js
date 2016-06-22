@@ -18,9 +18,8 @@ exports.startCreate = function () {
         i++;
     });
 };
-exports.test = function () {
-    myEvents.emit('createRank')
-};
+// exports.test = function () {
+// };
 
 myEvents.on('createRank',function () {
    UtilsCreateBriefTable.CreateBriefRank();

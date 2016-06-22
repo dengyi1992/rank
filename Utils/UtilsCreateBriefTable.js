@@ -44,7 +44,7 @@ myEvents.on('createBrief', function (tablename) {
     });
 });
 exports.CreateBriefRank = function () {
-    var tablename = 'brief_rank_' + TimeUtils.GetCrruentTime();
+    var tablename = 'brief_rank_' + TimeUtils.GetYesterday();
     var sql = 'CREATE TABLE IF NOT EXISTS ' + tablename + ' LIKE brief_dy ; ';
     conn.query(sql, function (err, rows, field) {
         if (err) {
@@ -54,8 +54,8 @@ exports.CreateBriefRank = function () {
 
 };
 exports.copyTableToRank = function (tablename) {
-    var ToTablename = 'brief_rank_' + TimeUtils.GetCrruentTime();
-    var selectTable = 'brief_' + tablename + '_' + TimeUtils.GetCrruentTime();
+    var ToTablename = 'brief_rank_' + TimeUtils.GetYesterday();
+    var selectTable = 'brief_' + tablename + '_' + TimeUtils.GetYesterday();
     var sql = 'insert into ' + ToTablename + ' select * from ' + selectTable;
     conn.query(sql, function (err, rows, field) {
         if (err) {
