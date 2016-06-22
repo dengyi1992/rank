@@ -4,7 +4,6 @@
  */
 exports.GetCrruentTime = function () {
     var date = new Date();
-    var month = date.getMonth() + 1;
     var dateString = date.toLocaleDateString();
     return dateString.replace(/\//g, "_");
     // console.log(date.getFullYear() + '年' +
@@ -19,7 +18,6 @@ exports.GetCrruentTime = function () {
  * @return {string}
  */
 exports.GetYesterday = function () {
-    var date = new Date();
     var   today=new   Date();
     var   yesterday_milliseconds=today.getTime()-1000*60*60*24;
     var Yesterday = new Date(yesterday_milliseconds);
