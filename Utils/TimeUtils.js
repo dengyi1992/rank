@@ -6,7 +6,7 @@ exports.GetCrruentTime = function () {
     var date = new Date();
     return date.getFullYear() + '.' +
         date.getMonth() + '.' +
-        date.getDay() + '.';
+        date.getDay();
     // console.log(date.getFullYear() + '年' +
     //     date.getMonth() + '月' +
     //     date.getDay() + '号' +
