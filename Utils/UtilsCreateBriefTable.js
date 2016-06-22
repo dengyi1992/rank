@@ -8,7 +8,7 @@ var TimeUtils = require('../Utils/TimeUtils');
 exports.CreateBrief = function (tablename) {
     myEvents.emit('createBrief', tablename);
 };
-myEvents.on('createBrief', function (data, tablename) {
+myEvents.on('createBrief', function (tablename) {
     var getCrruentTime = TimeUtils.GetCrruentTime();
     var selectTable='orignal_'+tablename+'_'+getCrruentTime;
     var createTable='brief_'+tablename+'_'+getCrruentTime;
