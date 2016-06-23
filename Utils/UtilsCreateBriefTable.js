@@ -82,9 +82,9 @@ exports.copyMonthTable = function (tablename, month, day) {
         }
     });
 };
-exports.CreateBriefRankMonth=function () {
+exports.CreateBriefRankMonth = function () {
     var tablename = 'brief_rank_' + TimeUtils.GetTodayYearMonth();
-    var sql = 'CREATE TABLE IF NOT EXISTS ' + tablename + ' LIKE brief_dy ; ';
+    var sql = 'CREATE TABLE IF NOT EXISTS ' + tablename + ' LIKE brief_dy_rank ; ';
     conn.query(sql, function (err, rows, field) {
         if (err) {
             console.log(err)
@@ -94,7 +94,10 @@ exports.CreateBriefRankMonth=function () {
 exports.copyTableToRankMonth = function () {
     var ToTablename = 'brief_rank_' + TimeUtils.GetYesterdayYearMonth();
     var selectTable = 'brief_rank_' + TimeUtils.GetYesterdayDay();
-    var sql = 'insert into ' + ToTablename + ' select * from ' + selectTable+' order by score desc limit 0,500';
+    var sql = "INSERT INTO " +ToTablename+
+        " (`room_id`, `count` ,`room_name`, `owner_uid`, `nickname` ,`game_name` ,`face` ,`tags`, `score` ,`avgFans` ,`avgOnline` ,`maxFans`, `maxOnline`, `platform` ,`ctime`) SELECT `room_id`, `count` ,`room_name`, `owner_uid`, `nickname` ,`game_name` ,`face` ,`tags`, `score` ,`avgFans` ,`avgOnline` ,`maxFans`, `maxOnline`, `platform`,NOW() AS `ctime` FROM " +selectTable+
+        "  ORDER BY `score` DESC  LIMIT 0,500;";
+    // var sql = 'insert into ' + ToTablename + ' select * from ' + selectTable + ' order by score desc limit 0,500';
     conn.query(sql, function (err, rows, field) {
         if (err) {
             console.log(err)

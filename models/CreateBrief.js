@@ -20,9 +20,9 @@ exports.startCreate = function () {
         i++;
     });
 };
-// exports.test = function () {
-//     myEvents.emit('RankMonth');
-// };
+exports.test = function () {
+    myEvents.emit('RankMonth');
+};
 
 myEvents.on('createRank', function () {
     UtilsCreateBriefTable.CreateBriefRank();
