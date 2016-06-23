@@ -8,7 +8,6 @@ var schedule = require('node-schedule');
 var rule = new schedule.RecurrenceRule();
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var request = require('request');
 var CreateBrief=require('./models/CreateBrief');
 
 var mypretime = 0;
@@ -73,48 +72,7 @@ schedule.scheduleJob(rule, function () {
     console.log('-----------------------临时表更新------------------------------');
     CreateBrief.startCreate();
 
-    request('http://120.27.94.166/ranknew/index.php/Home/MainPage/anchor_rank_hour_deal', function (error, response, body) {
-            if (error) {
-                return console.log(error)
-            }
-        }
-    );
-    request('http://120.27.94.166/ranknew/index.php/Home/MainPage/anchor_rank_week_deal', function (error, response, body) {
-            if (error) {
-                return console.log(error)
-            }
-        }
-    );
-    request('http://120.27.94.166/ranknew/index.php/Home/MainPage/platform_rank_hour_deal', function (error, response, body) {
-            if (error) {
-                return console.log(error)
-            }
-        }
-    );
-    request('http://120.27.94.166/ranknew/index.php/Home/MainPage/platform_rank_week_deal', function (error, response, body) {
-            if (error) {
-                return console.log(error)
-            }
-        }
-    );
-    request('http://120.27.94.166/ranknew/index.php/Home/MainPage/sort_rank_hour_deal', function (error, response, body) {
-            if (error) {
-                return console.log(error)
-            }
-        }
-    );
-    request('http://120.27.94.166/ranknew/index.php/Home/MainPage/sort_rank_week_deal', function (error, response, body) {
-            if (error) {
-                return console.log(error)
-            }
-        }
-    );
-    request('http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/mainInfo', function (error, response, body) {
-            if (error) {
-                return console.log(error)
-            }
-        }
-    );
+
 });
 
 module.exports = app;

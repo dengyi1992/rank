@@ -1,7 +1,7 @@
 var schedule = require('node-schedule');
 var UtilsCreateBriefTable = require("../Utils/UtilsCreateBriefTable");
 var TimeUtils = require("../Utils/TimeUtils");
-
+var request = require('request');
 var EventEmitter = require('events').EventEmitter;
 var myEvents = new EventEmitter();
 var rule = new schedule.RecurrenceRule();
@@ -57,6 +57,51 @@ myEvents.on('MonthTable', function () {
 myEvents.on('RankMonth',function () {
     UtilsCreateBriefTable.CreateBriefRankMonth();
     UtilsCreateBriefTable.copyTableToRankMonth();
+    myEvents.emit('phpUpdate');
+});
+myEvents.on('phpUpdate',function(){
+    request('http://120.27.94.166/ranknew/index.php/Home/MainPage/anchor_rank_hour_deal', function (error, response, body) {
+            if (error) {
+                return console.log(error)
+            }
+        }
+    );
+    request('http://120.27.94.166/ranknew/index.php/Home/MainPage/anchor_rank_week_deal', function (error, response, body) {
+            if (error) {
+                return console.log(error)
+            }
+        }
+    );
+    request('http://120.27.94.166/ranknew/index.php/Home/MainPage/platform_rank_hour_deal', function (error, response, body) {
+            if (error) {
+                return console.log(error)
+            }
+        }
+    );
+    request('http://120.27.94.166/ranknew/index.php/Home/MainPage/platform_rank_week_deal', function (error, response, body) {
+            if (error) {
+                return console.log(error)
+            }
+        }
+    );
+    request('http://120.27.94.166/ranknew/index.php/Home/MainPage/sort_rank_hour_deal', function (error, response, body) {
+            if (error) {
+                return console.log(error)
+            }
+        }
+    );
+    request('http://120.27.94.166/ranknew/index.php/Home/MainPage/sort_rank_week_deal', function (error, response, body) {
+            if (error) {
+                return console.log(error)
+            }
+        }
+    );
+    request('http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/mainInfo', function (error, response, body) {
+            if (error) {
+                return console.log(error)
+            }
+        }
+    );
 });
 
 
