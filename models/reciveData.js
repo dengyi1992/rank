@@ -21,15 +21,16 @@ myEvents.on('insertdata', function (data, tablename) {
         }
     });
     var insertSql = 'INSERT INTO ' + tablename + ' (room_id, room_name, owner_uid, nickname, online, game_name, fans, tags,score,face) VALUES (?,?,?,?,?,?,?,?,?,?)';
-
+    var values=[];
     for (var i = 0; i < data.data.length; i++) {
 
         var item = data.data[i];
         var insertParams = [item.room_id, item.room_name, item.owner_uid, item.nickname, item.online, item.game_name, item.fans, item.tags, Math.round(item.online * 0.05 + item.fans * 0.95),item.face];
-        conn.query(insertSql, insertParams, function (err, rows, field) {
-            if (err) {
-                return console.log(err)
-            }
-        })
+        values.push(insertParams)
     }
+    conn.query(insertSql, [values], function (err, rows, field) {
+        if (err) {
+            return console.log(err)
+        }
+    })
 });
