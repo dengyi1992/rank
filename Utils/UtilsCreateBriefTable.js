@@ -34,7 +34,7 @@ myEvents.on('createBrief', function (tablename) {
 
     var createSql = "CREATE TABLE  " + createTable +
         "  AS SELECT  room_id ,COUNT( room_id ),room_name ,owner_uid ,nickname ,game_name ,face ,tags ,AVG( score ) AS  score ,AVG( fans ) AS  avgFans ,AVG( online ) AS  avgOnline ,MAX( fans ) AS  maxFans ,MAX( online ) AS  maxOnline ,\"" +
-        tablename + "\" AS platform FROM  " + selectTable + " GROUP BY  room_id ORDER BY AVG( score ) DESC LIMIT 0,500";
+        tablename + "\" AS platform FROM  " + selectTable + " GROUP BY  room_id ORDER BY AVG( score ) DESC LIMIT 0,800";
     console.log(createSql);
     conn.query(createSql, function (err, rows, field) {
         if (err) {
@@ -96,7 +96,7 @@ exports.copyTableToRankMonth = function () {
     var selectTable = 'brief_rank_' + TimeUtils.GetYesterday();
     var sql = "INSERT INTO " +ToTablename+
         " (`room_id`, `count` ,`room_name`, `owner_uid`, `nickname` ,`game_name` ,`face` ,`tags`, `score` ,`avgFans` ,`avgOnline` ,`maxFans`, `maxOnline`, `platform` ,`ctime`) SELECT `room_id`, `count` ,`room_name`, `owner_uid`, `nickname` ,`game_name` ,`face` ,`tags`, `score` ,`avgFans` ,`avgOnline` ,`maxFans`, `maxOnline`, `platform`,NOW() AS `ctime` FROM " +selectTable+
-        "  ORDER BY `score` DESC  LIMIT 0,500;";
+        "  ORDER BY `score` DESC  LIMIT 0,800;";
     // var sql = 'insert into ' + ToTablename + ' select * from ' + selectTable + ' order by score desc limit 0,500';
     conn.query(sql, function (err, rows, field) {
         if (err) {
