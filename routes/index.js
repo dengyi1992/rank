@@ -68,7 +68,9 @@ router.get('/getAllTag', function (req, res, next) {
     }
 });
 router.get('/test',function (req, res, next) {
-    CreateBrief.test();
+    // CreateBrief.test();
+    res.json({msg: '测试接口'})
+
 });
 // router.get('/test1',function (req, res, next) {
 //     // CreateBrief.startCreate();
