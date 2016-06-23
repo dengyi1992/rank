@@ -55,8 +55,8 @@ myEvents.on('MonthTable', function () {
     });
 });
 myEvents.on('RankMonth',function () {
-    UtilsCreateBriefTable.copyTableToRankMonth();
     UtilsCreateBriefTable.CreateBriefRankMonth();
+    UtilsCreateBriefTable.copyTableToRankMonth();
 });
 
 
