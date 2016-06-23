@@ -9,7 +9,7 @@ var rule = new schedule.RecurrenceRule();
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var request = require('request');
-
+var mypretime=0;
 var times = [];
 rule.second = times;
 
@@ -62,41 +62,40 @@ app.use(function (err, req, res, next) {
 });
 rule.hour = times;
 times.push(0);
-var optionsDay = {
-    method: 'GET',
-    encoding: null,
-    url: 'http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/crawlerDayInfo'
-};
-var optionsMonth = {
-    method: 'GET',
-    encoding: null,
-    url: 'http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/crawlerDayInfo'
-};
-var optionsMain = {
-    method: 'GET',
-    encoding: null,
-    url: 'http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/mainInfo'
-};
 schedule.scheduleJob(rule, function () {
+    sub();
     console.log("----------------------------------");
-    request(optionsDay, function (error, response, body) {
-            if (error) {
-                return console.log(error)
-            }
-        }
-    );
-    request(optionsMonth, function (error, response, body) {
-            if (error) {
-                return console.log(error)
-            }
-        }
-    )
-    request(optionsMain, function (error, response, body) {
-            if (error) {
-                return console.log(error)
-            }
-        }
-    );
-});
 
+});
+function sub() {
+    var Today = new Date();
+    var NowHour = Today.getHours();
+    var NowMinute = Today.getMinutes();
+    var NowSecond = Today.getSeconds();
+    var mysec = (NowHour * 3600) + (NowMinute * 60) + NowSecond;
+    if ((mysec - mypretime) > 30) {
+//10只是一个时间值，就是10秒内禁止重复提交，值随便设
+        mypretime = mysec;
+    } else {
+        return;
+    }
+    request('http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/crawlerDayInfo', function (error, response, body) {
+            if (error) {
+                return console.log(error)
+            }
+        }
+    );
+    request('http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/crawlerDayInfo', function (error, response, body) {
+            if (error) {
+                return console.log(error)
+            }
+        }
+    );
+    request('http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/mainInfo', function (error, response, body) {
+            if (error) {
+                return console.log(error)
+            }
+        }
+    );
+}
 module.exports = app;
