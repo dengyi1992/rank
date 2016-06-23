@@ -5,7 +5,7 @@
 exports.GetCrruentTime = function () {
     var date = new Date();
     var month = date.getMonth() + 1;
-    return date.getFullYear() + '_' + month + '_' + date.getDate();
+    return date.getFullYear() + '_' + '_' + (month < 10 ? '0' + month : month) + '_' + (date.getDate() < 10 ? '0' + date.getDate() : date.getDate());
 
 };
 /**
@@ -16,7 +16,8 @@ exports.GetYesterday = function () {
     var yesterday_milliseconds = today.getTime() - 1000 * 60 * 60 * 24;
     var yesterday = new Date(yesterday_milliseconds);
     var month = yesterday.getMonth() + 1;
-    return yesterday.getFullYear() + '_' + month + '_' + yesterday.getDate();
+    return yesterday.getFullYear() + '_' + '_' + (month < 10 ? '0' + month : month) + '_' + (yesterday.getDate() < 10 ? '0' + yesterday.getDate() : yesterday.getDate());
+
 };
 /**
  * @return {string}
@@ -25,16 +26,17 @@ exports.GetYesterday = function () {
 exports.GetMonth = function () {
     var today = new Date();
     var month = today.getMonth() + 1;
-    return today.getFullYear() + '_' + month;
+    return today.getFullYear() + '_' + (month < 10 ? '0' + month : month);
 };
 /**
- * @return {number}
+ * @return {string}
  */
 exports.GetYesterdayMonth = function () {
     var today = new Date();
     var yesterday_milliseconds = today.getTime() - 1000 * 60 * 60 * 24;
     var yesterday = new Date(yesterday_milliseconds);
-    return yesterday.getMonth() + 1;
+    var month = yesterday.getMonth() + 1;
+    return (month < 10 ? '0' + month : ''+month);
 };
 
 /**
@@ -45,7 +47,7 @@ exports.GetYesterdayYearMonth = function () {
     var yesterday_milliseconds = today.getTime() - 1000 * 60 * 60 * 24;
     var yesterday = new Date(yesterday_milliseconds);
     var month = yesterday.getMonth() + 1;
-    return yesterday.getFullYear() + '_' + month;
+    return yesterday.getFullYear() + '_' + (month < 10 ? '0' + month : month);
 };
 /**
  * @return {string}
@@ -53,14 +55,14 @@ exports.GetYesterdayYearMonth = function () {
 exports.GetTodayYearMonth = function () {
     var today = new Date();
     var month = today.getMonth() + 1;
-    return today.getFullYear() + '_' + month;
+    return today.getFullYear() + '_' + (month < 10 ? '0' + month : month);
 };
 /**
- * @return {number}
+ * @return {string}
  */
 exports.GetYesterdayDay = function () {
     var today = new Date();
     var yesterday_milliseconds = today.getTime() - 1000 * 60 * 60 * 24;
     var yesterday = new Date(yesterday_milliseconds);
-    return yesterday.getDate();
+    return (yesterday.getDate() < 10 ? '0' + yesterday.getDate() : ''+yesterday.getDate());
 };
