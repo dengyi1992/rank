@@ -9,9 +9,8 @@ var rule = new schedule.RecurrenceRule();
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var request = require('request');
-var mypretime=0;
-var times = [];
-rule.second = times;
+var mypretime = 0;
+
 
 var app = express();
 
@@ -60,25 +59,16 @@ app.use(function (err, req, res, next) {
         error: {}
     });
 });
-rule.hour = times;
-times.push(0);
-schedule.scheduleJob(rule, function () {
-    sub();
-    console.log("----------------------------------");
+// rule.dayOfWeek = [0, new schedule.Range(1, 6)];
+rule.dayOfWeek = [0, new schedule.Range(1, 6)];
 
-});
-function sub() {
-    var Today = new Date();
-    var NowHour = Today.getHours();
-    var NowMinute = Today.getMinutes();
-    var NowSecond = Today.getSeconds();
-    var mysec = (NowHour * 3600) + (NowMinute * 60) + NowSecond;
-    if ((mysec - mypretime) > 30) {
-//10只是一个时间值，就是10秒内禁止重复提交，值随便设
-        mypretime = mysec;
-    } else {
-        return;
-    }
+rule.hour = 0;
+
+rule.minute = 0;
+
+
+schedule.scheduleJob(rule, function () {
+    console.log('-----------------------临时表更新------------------------------');
     request('http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/crawlerDayInfo', function (error, response, body) {
             if (error) {
                 return console.log(error)
@@ -97,5 +87,7 @@ function sub() {
             }
         }
     );
-}
+
+});
+
 module.exports = app;
