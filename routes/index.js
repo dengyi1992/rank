@@ -60,6 +60,11 @@ router.post('/laifeng', function (req, res, next) {
     recive.reciveData(req.body, 'laifeng');
     res.json({msg: 'success'})
 });
+router.post('/ingkee', function (req, res, next) {
+    // console.log(req.body);
+    recive.reciveData(req.body, 'ingkee');
+    res.json({msg: 'success'})
+});
 router.get('/getAllTag', function (req, res, next) {
     if (TagTimer.TagTimer()){
         res.json({msg: 'success,开始...'})

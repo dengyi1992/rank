@@ -34,7 +34,7 @@ myEvents.on('createBrief', function (tablename) {
 
     var createSql = "CREATE TABLE  " + createTable +
         "  AS SELECT  room_id ,COUNT( room_id ),room_name ,owner_uid ,nickname ,game_name ,face ,tags ,AVG( score ) AS  score ,AVG( fans ) AS  avgFans ,AVG( online ) AS  avgOnline ,MAX( fans ) AS  maxFans ,MAX( online ) AS  maxOnline ,\"" +
-        tablename + "\" AS platform FROM  " + selectTable + " GROUP BY  room_id ORDER BY AVG( score ) DESC LIMIT 0,800";
+        tablename + "\" AS platform FROM  " + selectTable + " GROUP BY  room_id ORDER BY AVG( score ) DESC ";
     console.log(createSql);
     conn.query(createSql, function (err, rows, field) {
         if (err) {
@@ -63,6 +63,26 @@ exports.copyTableToRank = function (tablename) {
     });
 
 };
+// exports.createSortRank=function () {
+//     var tablename = 'all_sort_' + TimeUtils.GetYesterday();
+//     var sql = 'CREATE TABLE IF NOT EXISTS ' + tablename + ' LIKE brief_dy ; ';
+//     conn.query(sql, function (err, rows, field) {
+//         if (err) {
+//             console.log(err)
+//         }
+//     });
+// };
+// exports.copyTableToSortRank=function (tableName) {
+//     var ToTablename = 'all_sort_' + TimeUtils.GetYesterday();
+//     var selectTable = 'brief_' + tableName + '_' + TimeUtils.GetYesterday();
+//     var sql = 'insert into ' + ToTablename + ' select * from ' + selectTable;
+//     conn.query(sql, function (err, rows, field) {
+//         if (err) {
+//             console.log(err)
+//         }
+//     });
+//
+// };
 exports.createMonthTable = function (tablename, month) {
     var ToTablename = 'brief_' + tablename + '_' + month;
     var sql = 'CREATE TABLE IF NOT EXISTS ' + ToTablename + ' LIKE brief_dy ; ';
