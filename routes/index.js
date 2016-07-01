@@ -2,8 +2,8 @@ var express = require('express');
 var recive = require('../models/reciveData');
 var getTags = require("../models/getTags.js");
 var TagTimer = require("../controler/TagUtils.js");
-var UtilsCreateBriefTable=require("../Utils/UtilsCreateBriefTable");
-var CreateBrief=require("../models/CreateBrief");
+var UtilsCreateBriefTable = require("../Utils/UtilsCreateBriefTable");
+var CreateBrief = require("../models/CreateBrief");
 
 var router = express.Router();
 
@@ -65,14 +65,22 @@ router.post('/ingkee', function (req, res, next) {
     recive.reciveData(req.body, 'ingkee');
     res.json({msg: 'success'})
 });
+router.get('/log', function (req, res, next) {
+    var platform = req.query.platform;
+    var action = req.query.action;
+    var amount = req.query.amount;
+    recive.log(platform, action, amount);
+    res.json({msg: 'success'})
+
+});
 router.get('/getAllTag', function (req, res, next) {
-    if (TagTimer.TagTimer()){
+    if (TagTimer.TagTimer()) {
         res.json({msg: 'success,开始...'})
-    }else {
+    } else {
         res.json({msg: '还有个任务在进行中'})
     }
 });
-router.get('/test',function (req, res, next) {
+router.get('/test', function (req, res, next) {
     CreateBrief.test();
     res.json({msg: '测试接口'})
 

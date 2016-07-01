@@ -34,3 +34,12 @@ myEvents.on('insertdata', function (data, tablename) {
         }
     })
 });
+exports.log=function (platform, action, amount) {
+    var sql = "INSERT INTO `log`(`platform` ,`action` ,`amount` ) VALUES (?,?,？)";
+    var values=[platform,action,amount];
+    conn.query(sql, values, function (err, rows, field) {
+        if (err) {
+            return console.log(err)
+        }
+    })
+};
