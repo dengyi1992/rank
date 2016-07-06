@@ -6,7 +6,7 @@ var EventEmitter = require('events').EventEmitter;
 var myEvents = new EventEmitter();
 var rule = new schedule.RecurrenceRule();
 rule.second = 0;
-var tables = ['bilibli', 'douyu', 'huajiao', 'huya', 'laifeng', 'longzhu', 'panda', 'sixrooms', 'yy','ingkee'];
+var tables = ['bilibli', 'douyu', 'huajiao', 'huya', 'laifeng', 'longzhu', 'panda', 'sixrooms', 'yy', 'ingkee'];
 exports.startCreate = function () {
     var i = 0;
     schedule.scheduleJob(rule, function () {
