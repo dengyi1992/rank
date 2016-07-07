@@ -44,7 +44,7 @@ myEvents.on('insertDanMu', function (platform,roomId,body) {
     var values=[];
     for (var i = 0; i < body.data.length; i++) {
         var item = body.data[i];
-        var insertParams = [item.nn, item.uid, item.txt, item.level, item.type,new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
+        var insertParams = [item.nn, item.uid, item.txt, item.level,item.type,item.ct,new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
         console.log(new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss"));
         values.push(insertParams)
     }
