@@ -88,6 +88,7 @@ router.get('/test', function (req, res, next) {
 router.post('/dm',function (req, res, next) {
     var platform = req.query.platform;
     var roomId = req.query.room_id;
+    console.log(platform+roomId);
     danmu.DanMuSave(platform,roomId,req.body);
     res.json({msg: 'success'})
 
