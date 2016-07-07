@@ -4,7 +4,7 @@ var getTags = require("../models/getTags.js");
 var TagTimer = require("../controler/TagUtils.js");
 var UtilsCreateBriefTable = require("../Utils/UtilsCreateBriefTable");
 var CreateBrief = require("../models/CreateBrief");
-
+var danmu=require('../models/danmu');
 var router = express.Router();
 
 /* GET home page. */
@@ -83,6 +83,14 @@ router.get('/getAllTag', function (req, res, next) {
 router.get('/test', function (req, res, next) {
     CreateBrief.test();
     res.json({msg: '测试接口'})
+
+});
+router.post('/dm',function (req, res, next) {
+    var platform = req.query.platform;
+    var roomId = req.query.room_id;
+    console.log(platform+roomId);
+    danmu.DanMuSave(platform,roomId,req.body);
+    res.json({msg: 'success'})
 
 });
 // router.get('/test1',function (req, res, next) {
