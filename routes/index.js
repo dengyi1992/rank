@@ -4,7 +4,9 @@ var getTags = require("../models/getTags.js");
 var TagTimer = require("../controler/TagUtils.js");
 var UtilsCreateBriefTable = require("../Utils/UtilsCreateBriefTable");
 var CreateBrief = require("../models/CreateBrief");
-var danmu=require('../models/danmu');
+var danmu = require('../models/danmu');
+var ReadDB = require('../models/readDB');
+
 var router = express.Router();
 
 /* GET home page. */
@@ -85,13 +87,21 @@ router.get('/test', function (req, res, next) {
     res.json({msg: '测试接口'})
 
 });
-router.post('/dm',function (req, res, next) {
+router.post('/dm', function (req, res, next) {
     var platform = req.query.platform;
     var roomId = req.query.room_id;
-    console.log(platform+roomId);
-    danmu.DanMuSave(platform,roomId,req.body);
+    console.log(platform + roomId);
+    danmu.DanMuSave(platform, roomId, req.body);
     res.json({msg: 'success'})
 
+});
+router.get('/getRooms', function (req, res, next) {
+    ReadDB.getRooms(req.query.platform, req.query.topn, function (err, rows) {
+        if (err) {
+            return res.json({msg: 'err'});
+        }
+        res.json({msg: 'success', data: rows})
+    })
 });
 // router.get('/test1',function (req, res, next) {
 //     // CreateBrief.startCreate();
