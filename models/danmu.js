@@ -44,7 +44,19 @@ myEvents.on('insertDanMu', function (platform,roomId,body) {
     var values=[];
     for (var i = 0; i < body.data.length; i++) {
         var item = body.data[i];
-        var insertParams = [item.nn, item.uid, item.txt, item.level,item.type,item.ct,new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
+        var type=0;
+        switch (item.type){
+            case 'chatmsg':
+                type=1;
+                break;
+            case 'spbc':
+                type=2;
+                break;
+            case 'uenter':
+                type=0;
+                break; 
+        }
+        var insertParams = [item.nn, item.uid, item.txt, item.level,type,item.ct,new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
         values.push(insertParams)
     }
     conn.query(insertSql, [values], function (err, rows, field) {
