@@ -6,6 +6,7 @@ var UtilsCreateBriefTable = require("../Utils/UtilsCreateBriefTable");
 var CreateBrief = require("../models/CreateBrief");
 var danmu = require('../models/danmu');
 var dmBilibili = require('../models/danmuBilibili');
+var InsertRoom =require('../models/insertDMRoom');
 
 var ReadDB = require('../models/readDB');
 
@@ -94,6 +95,7 @@ router.post('/dm', function (req, res, next) {
     var roomId = req.query.room_id;
     console.log(platform + roomId);
     danmu.DanMuSave(platform, roomId, req.body);
+    InsertRoom.InsertRoom(platform,roomId);
     res.json({msg: 'success'})
 
 });
@@ -101,6 +103,7 @@ router.post('/dmBilibili', function (req, res, next) {
     var roomId = req.query.room_id;
     console.log("Bilibili" + roomId);
     dmBilibili.DanMuSave(roomId, req.body);
+    InsertRoom.InsertRoom("bilibili",roomId);
     res.json({msg: 'success'})
 
 });
