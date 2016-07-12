@@ -60,6 +60,7 @@ myEvents.on('insertDanMu', function (platform,roomId,body) {
         }
         values.push(insertParams)
     }
+    console.log(values.toSource());
     conn.query(insertSql, [values], function (err, rows, field) {
         if (err) {
             return console.log(err)
