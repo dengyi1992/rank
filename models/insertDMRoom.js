@@ -13,12 +13,12 @@ exports.InsertRoom=function (platform,roomid) {
         ' (`room_id` ) VALUES(?)';
     conn.query(sql,function (err, rows) {
         if (err){
-            return console.log(err);
+            // return console.log(err);
         }
     });
     conn.query(insertSql,[roomid],function (err, rows) {
         if (err){
-            return console.log(err);
+            // return console.log(err);
         }
     })
 
