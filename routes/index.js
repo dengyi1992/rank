@@ -103,7 +103,7 @@ router.post('/dmBilibili', function (req, res, next) {
     var roomId = req.query.room_id;
     console.log("Bilibili" + roomId);
     dmBilibili.DanMuSave(roomId, req.body);
-    InsertRoom.InsertRoom("bilibili",roomId);
+    InsertRoom.InsertRoom("bilibli",roomId);
     res.json({msg: 'success'})
 
 });
