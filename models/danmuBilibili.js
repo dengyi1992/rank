@@ -35,7 +35,7 @@ exports.DanMuSave=function (roomId,body) {
 myEvents.on('insertDanMu', function (platform,roomId,body) {
     var tablename=platform+'_'+roomId+'_chat_'+TimeUtils.GetCrruentTime();
     var sql = 'CREATE TABLE IF NOT EXISTS ' + tablename + ' LIKE danmumodel ; ';
-    //59125::::::{"cmd":"WELCOME","data":{"isadmin":0,"vip":1,"uid":16379590,"uname":"搓着咸鱼瞪着喵"},"roomid":59125,"ctime":1468289618122}
+    // 59125::::::{"cmd":"WELCOME","data":{"isadmin":0,"vip":1,"uid":16379590,"uname":"搓着咸鱼瞪着喵"},"roomid":59125,"ctime":1468289618122}
     // 59125::::::{"cmd":"WELCOME","data":{"isadmin":0,"vip":1,"uid":13445083,"uname":"麻花辫姐姐"},"roomid":59125,"ctime":1468289620266}
     // 59125::::::{"info":[[0,1,25,16777215,1468289621,"1468289279",0,"6ab11cdd",0],"是纸巾",[31108542,"狮子的酱油瓶",0,0,0,10000],[],[3,">1000000",16754085],[]],"cmd":"DANMU_MSG","ctime":1468289622586}
     // 59125::::::{"cmd":"WELCOME","data":{"isadmin":0,"vip":1,"uid":13369154,"uname":"YZshadow"},"roomid":59125,"ctime":1468289624883}
