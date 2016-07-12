@@ -48,19 +48,18 @@ myEvents.on('insertDanMu', function (platform,roomId,body) {
         var type=0;
         var insertParams;
         switch (item.cmd){
-            case 'chatmsg':
-                insertParams= [item.info[2][1], item.info[2][0], item.info[1], item.info[4][0],1,0,new Date(item.data.ctime).format("yyyy-MM-dd hh:mm:ss")];
+            case 'DANMU_MSG':
+                insertParams= [item.info[2][1], item.info[2][0], item.info["1"], item.info[4][0],1,0,new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
                 break;
             case 'SEND_GIFT':
-                insertParams= [item.data.uname, item.data.uid, item.data.giftName, item.data.vip,2,0,new Date(item.data.ctime).format("yyyy-MM-dd hh:mm:ss")];
+                insertParams= [item.data.uname, item.data.uid, item.data.giftName, 0,2,0,new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
                 break;
             case 'WELCOME':
-                insertParams= [item.data.uname, item.data.uid, 'WELCOME', item.data.vip,0,0,new Date(item.data.ctime).format("yyyy-MM-dd hh:mm:ss")];
+                insertParams= [item.data.uname, item.data.uid, 'WELCOME', item.data.vip,0,0,new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
                 break; 
         }
         values.push(insertParams)
     }
-    console.log(values.toSource());
     conn.query(insertSql, [values], function (err, rows, field) {
         if (err) {
             return console.log(err)
