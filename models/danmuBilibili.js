@@ -29,12 +29,13 @@ Date.prototype.format = function (format) {
     }
     return format;
 };
-exports.DanMuSave=function (platform,roomId,body) {
-    myEvents.emit('insertDanMu', platform,roomId,body);
+exports.DanMuSave=function (roomId,body) {
+    myEvents.emit('insertDanMu', 'bilibli',roomId,body);
 };
 myEvents.on('insertDanMu', function (platform,roomId,body) {
     var tablename=platform+'_'+roomId+'_chat_'+TimeUtils.GetCrruentTime();
     var sql = 'CREATE TABLE IF NOT EXISTS ' + tablename + ' LIKE danmumodel ; ';
+
     conn.query(sql, function (err, rows, field) {
         if (err) {
             console.log(err)
@@ -45,18 +46,18 @@ myEvents.on('insertDanMu', function (platform,roomId,body) {
     for (var i = 0; i < body.data.length; i++) {
         var item = body.data[i];
         var type=0;
-        switch (item.type){
-            case 'chatmsg':
-                type=1;
+        var insertParams;
+        switch (item.cmd){
+            case 'DANMU_MSG':
+                insertParams= [item.info[2][1], item.info[2][0], item.info["1"], item.info[4][0],1,0,new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
                 break;
-            case 'spbc':
-                type=2;
+            case 'SEND_GIFT':
+                insertParams= [item.data.uname, item.data.uid, item.data.giftName, 0,2,0,new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
                 break;
-            case 'uenter':
-                type=0;
+            case 'WELCOME':
+                insertParams= [item.data.uname, item.data.uid, 'WELCOME', item.data.vip,0,0,new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
                 break; 
         }
-        var insertParams = [item.nn, item.uid, item.txt, item.level,type,item.ct,new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
         values.push(insertParams)
     }
     conn.query(insertSql, [values], function (err, rows, field) {
