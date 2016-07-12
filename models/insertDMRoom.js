@@ -7,7 +7,7 @@ var config = require("../config.js");
 var conn = mysql.createConnection(config.db);
 var TimeUtils = require('../Utils/TimeUtils');
 exports.InsertRoom=function (platform,roomid) {
-    var tablename = 'chat_'+platform+'_'+ TimeUtils.GetYesterday();
+    var tablename = 'chat_'+platform+'_'+ TimeUtils.GetCrruentTime();
     var sql = 'CREATE TABLE IF NOT EXISTS ' + tablename + ' LIKE chat_douyu_tpl ; ';
     var insertSql='INSERT INTO ' +tablename+
         ' (`room_id` ) VALUES(?)';
