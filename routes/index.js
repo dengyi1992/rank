@@ -7,6 +7,7 @@ var CreateBrief = require("../models/CreateBrief");
 var danmu = require('../models/danmu');
 var dmBilibili = require('../models/danmuBilibili');
 var InsertRoom =require('../models/insertDMRoom');
+var dmpandatv = require('../models/pandatv');
 
 var ReadDB = require('../models/readDB');
 
@@ -104,9 +105,19 @@ router.post('/dmBilibili', function (req, res, next) {
     console.log("Bilibili" + roomId);
     dmBilibili.DanMuSave(roomId, req.body);
     InsertRoom.InsertRoom("bilibli",roomId);
+    res.json({msg: 'success'});
+
+});
+
+router.post('/dmPandatv', function (req, res, next) {
+    var roomId = req.query.room_id;
+    console.log("PandaTv: " + roomId);
+    dmpandatv.DanMuSave(roomId, req.body);
+    InsertRoom.InsertRoom("panda",roomId);
     res.json({msg: 'success'})
 
 });
+
 router.get('/getRooms', function (req, res, next) {
     ReadDB.getRooms(req.query.platform, req.query.topn, function (err, rows) {
         if (err) {
