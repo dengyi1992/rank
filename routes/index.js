@@ -18,7 +18,7 @@ router.get('/', function (req, res, next) {
     res.render('index', {title: 'Express'});
 });
 /**
- * 斗鱼数据传输
+ * 斗鱼数据传输where are you
  * 以json传输
  */
 router.post('/douyu', function (req, res, next) {
