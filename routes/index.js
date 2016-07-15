@@ -1,13 +1,14 @@
 var express = require('express');
 var recive = require('../models/reciveData');
-var getTags = require("../models/getTags.js");
+// var getTags = require("../models/getTags.js");
 var TagTimer = require("../controler/TagUtils.js");
-var UtilsCreateBriefTable = require("../Utils/UtilsCreateBriefTable");
+// var UtilsCreateBriefTable = require("../Utils/UtilsCreateBriefTable");
 var CreateBrief = require("../models/CreateBrief");
 var danmu = require('../models/danmu');
 var dmBilibili = require('../models/danmuBilibili');
 var InsertRoom =require('../models/insertDMRoom');
 var dmpandatv = require('../models/pandatv');
+var dmyy = require('../models/danmuyy');
 
 var ReadDB = require('../models/readDB');
 
@@ -114,7 +115,16 @@ router.post('/dmPandatv', function (req, res, next) {
     console.log("PandaTv: " + roomId);
     dmpandatv.DanMuSave(roomId, req.body);
     InsertRoom.InsertRoom("panda",roomId);
-    res.json({msg: 'success'})
+    res.json({msg: 'success'});
+
+});
+
+router.post('/dmYY', function (req, res, next) {
+    var roomId = req.query.room_id;
+    console.log("YY: " + roomId);
+    dmyy.DanMuSave(roomId, req.body);
+    InsertRoom.InsertRoom("YY",roomId);
+    res.json({msg: 'success'});
 
 });
 
