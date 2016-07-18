@@ -6,7 +6,7 @@ var EventEmitter = require('events').EventEmitter;
 var myEvents = new EventEmitter();
 var rule = new schedule.RecurrenceRule();
 rule.second = 0;
-var tables = ['bilibli', 'douyu', 'huajiao', 'huya', 'laifeng', 'longzhu', 'panda', 'sixrooms', 'yy','ingkee'];
+var tables = ['bilibli', 'douyu', 'huajiao', 'huya', 'laifeng', 'longzhu', 'panda', 'sixrooms', 'yy', 'ingkee'];
 exports.startCreate = function () {
     var i = 0;
     schedule.scheduleJob(rule, function () {
@@ -40,7 +40,7 @@ myEvents.on('createRank', function () {
 });
 myEvents.on('MonthTable', function () {
     for (var i = 0; i < tables.length; i++) {
-        UtilsCreateBriefTable.createMonthTable(tables[i],TimeUtils.GetYesterdayYearMonth());
+        UtilsCreateBriefTable.createMonthTable(tables[i], TimeUtils.GetYesterdayYearMonth());
     }
     var k = 0;
     schedule.scheduleJob(rule, function () {
@@ -54,12 +54,12 @@ myEvents.on('MonthTable', function () {
         k++;
     });
 });
-myEvents.on('RankMonth',function () {
+myEvents.on('RankMonth', function () {
     UtilsCreateBriefTable.CreateBriefRankMonth();
     UtilsCreateBriefTable.copyTableToRankMonth();
     myEvents.emit('phpUpdate');
 });
-myEvents.on('phpUpdate',function(){
+myEvents.on('phpUpdate', function () {
     request('http://120.27.94.166/ranknew/index.php/Home/MainPage/anchor_rank_hour_deal', function (error, response, body) {
             if (error) {
                 return console.log(error)
@@ -102,6 +102,14 @@ myEvents.on('phpUpdate',function(){
             }
         }
     );
+    request('http://rank2.dataguiding.com/Home/NewTable/create_table', function (error, response, body) {
+            if (error) {
+                return console.log(error)
+            }
+
+        }
+    );
+
 });
 
 
