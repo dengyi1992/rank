@@ -28,9 +28,9 @@ exports.CreateBrief = function (tablename) {
     myEvents.emit('createBrief', tablename);
 };
 myEvents.on('createBrief', function (tablename) {
-    var getCrruentTime = TimeUtils.GetYesterday();
-    var selectTable = 'orignal_' + tablename + '_' + getCrruentTime;
-    var createTable = 'brief_' + tablename + '_' + getCrruentTime;
+    var getCurrentTime = TimeUtils.GetYesterday();
+    var selectTable = 'orignal_' + tablename + '_' + getCurrentTime;
+    var createTable = 'brief_' + tablename + '_' + getCurrentTime;
 
     var createSql = "CREATE TABLE  " + createTable +
         "  AS SELECT  room_id ,COUNT( room_id ),room_name ,owner_uid ,nickname ,game_name ,face ,tags ,AVG( score ) AS  score ,AVG( fans ) AS  avgFans ,AVG( online ) AS  avgOnline ,MAX( fans ) AS  maxFans ,MAX( online ) AS  maxOnline ,\"" +
