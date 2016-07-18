@@ -102,7 +102,7 @@ myEvents.on('phpUpdate', function () {
             }
         }
     );
-    request('http://rank2.dataguiding.com/Home/NewTable/create_table', function (error, response, body) {
+    request('http://rank2.dataguiding.com/Home/NewTable/create_final_table', function (error, response, body) {
             if (error) {
                 return console.log(error)
             }
