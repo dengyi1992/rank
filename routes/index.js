@@ -10,6 +10,7 @@ var InsertRoom = require('../models/insertDMRoom');
 var dmpandatv = require('../models/pandatv');
 var dmyy = require('../models/danmuyy');
 var danmuLZ = require('../models/danmulz');
+var danmuLF = require('../models/danmu_laifeng');
 
 var ReadDB = require('../models/readDB');
 
@@ -125,6 +126,15 @@ router.post('/dmYY', function (req, res, next) {
     console.log("YY: " + roomId);
     dmyy.DanMuSave(roomId, req.body);
     InsertRoom.InsertRoom("YY", roomId);
+    res.json({msg: 'success'});
+
+});
+
+router.post('/dmLaiFeng', function (req, res, next) {
+    var roomId = req.query.room_id;
+    console.log("laifeng: " + roomId);
+    danmuLF.DanMuSave(roomId, req.body);
+    InsertRoom.InsertRoom("laifeng", roomId);
     res.json({msg: 'success'});
 
 });
