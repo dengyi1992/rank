@@ -128,6 +128,15 @@ router.post('/dmYY', function (req, res, next) {
 
 });
 
+router.post('/dmLZ', function (req, res, next) {
+    var roomId = req.query.room_id;
+    console.log("LZ: " + roomId);
+    dmyy.DanMuSave(roomId, req.body);
+    InsertRoom.InsertRoom("YY",roomId);
+    res.json({msg: 'success'});
+
+});
+
 router.get('/getRooms', function (req, res, next) {
     ReadDB.getRooms(req.query.platform, req.query.topn, function (err, rows) {
         if (err) {
