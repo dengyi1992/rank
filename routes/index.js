@@ -6,9 +6,10 @@ var TagTimer = require("../controler/TagUtils.js");
 var CreateBrief = require("../models/CreateBrief");
 var danmu = require('../models/danmu');
 var dmBilibili = require('../models/danmuBilibili');
-var InsertRoom =require('../models/insertDMRoom');
+var InsertRoom = require('../models/insertDMRoom');
 var dmpandatv = require('../models/pandatv');
 var dmyy = require('../models/danmuyy');
+var danmuLZ = require('../models/danmulz');
 
 var ReadDB = require('../models/readDB');
 
@@ -97,7 +98,7 @@ router.post('/dm', function (req, res, next) {
     var roomId = req.query.room_id;
     console.log(platform + roomId);
     danmu.DanMuSave(platform, roomId, req.body);
-    InsertRoom.InsertRoom(platform,roomId);
+    InsertRoom.InsertRoom(platform, roomId);
     res.json({msg: 'success'})
 
 });
@@ -105,7 +106,7 @@ router.post('/dmBilibili', function (req, res, next) {
     var roomId = req.query.room_id;
     console.log("Bilibili" + roomId);
     dmBilibili.DanMuSave(roomId, req.body);
-    InsertRoom.InsertRoom("bilibli",roomId);
+    InsertRoom.InsertRoom("bilibli", roomId);
     res.json({msg: 'success'});
 
 });
@@ -114,7 +115,7 @@ router.post('/dmPandatv', function (req, res, next) {
     var roomId = req.query.room_id;
     console.log("PandaTv: " + roomId);
     dmpandatv.DanMuSave(roomId, req.body);
-    InsertRoom.InsertRoom("panda",roomId);
+    InsertRoom.InsertRoom("panda", roomId);
     res.json({msg: 'success'});
 
 });
@@ -123,7 +124,7 @@ router.post('/dmYY', function (req, res, next) {
     var roomId = req.query.room_id;
     console.log("YY: " + roomId);
     dmyy.DanMuSave(roomId, req.body);
-    InsertRoom.InsertRoom("YY",roomId);
+    InsertRoom.InsertRoom("YY", roomId);
     res.json({msg: 'success'});
 
 });
@@ -131,8 +132,8 @@ router.post('/dmYY', function (req, res, next) {
 router.post('/dmLZ', function (req, res, next) {
     var roomId = req.query.room_id;
     console.log("LZ: " + roomId);
-    dmyy.DanMuSave(roomId, req.body);
-    InsertRoom.InsertRoom("YY",roomId);
+    danmuLZ.DanMuSave(roomId, req.body);
+    InsertRoom.InsertRoom("LongZhu", roomId);
     res.json({msg: 'success'});
 
 });
