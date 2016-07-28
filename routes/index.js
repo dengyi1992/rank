@@ -11,6 +11,7 @@ var dmpandatv = require('../models/pandatv');
 var dmyy = require('../models/danmuyy');
 var danmuLZ = require('../models/danmulz');
 var danmuLF = require('../models/danmu_laifeng');
+var danmuIK = require('../models/danmu_ingkee');
 
 var ReadDB = require('../models/readDB');
 
@@ -144,6 +145,15 @@ router.post('/dmLZ', function (req, res, next) {
     console.log("LZ: " + roomId);
     danmuLZ.DanMuSave(roomId, req.body);
     InsertRoom.InsertRoom("LongZhu", roomId);
+    res.json({msg: 'success'});
+
+});
+
+router.post('/dmIngkee', function (req, res, next) {
+    var roomId = req.query.room_id;
+    console.log("ingkee: " + roomId);
+    danmuIK.DanMuSave(roomId, req.body);
+    InsertRoom.InsertRoom("ingkee", roomId);
     res.json({msg: 'success'});
 
 });
