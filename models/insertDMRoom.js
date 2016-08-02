@@ -25,3 +25,19 @@ exports.InsertRoom=function (platform,roomid) {
 
 
 };
+exports.InsertIngkeeRoom=function (json) {
+    var tablename = 'chat_ingkee_'+ TimeUtils.GetCrruentTime();
+    var sql = 'CREATE TABLE IF NOT EXISTS ' + tablename + ' LIKE chat_douyu_tpl ; ';
+    var insertSql='replace INTO ' +tablename+
+        ' (`room_id` ,`room_name` ,`owner_id` ,`nickname` ,`online` ,`fans` ,`platform`) VALUES(?,?,?,?,?,?,?)';
+    conn.query(sql,function (err, rows) {
+        if (err){
+            // return console.log(err);
+        }
+    });
+    conn.query(insertSql,[json.room_id,json.room_name,json.owner_id,json.nickname,json.online,json.fans,json.platform],function (err, rows) {
+        if (err){
+            // return console.log(err);
+        }
+    })
+};
