@@ -35,7 +35,7 @@ exports.InsertIngkeeRoom=function (json) {
             // return console.log(err);
         }
     });
-    conn.query(insertSql,[json.room_id,json.room_name,json.owner_id,json.nickname,json.online,json.fans,json.platform],function (err, rows) {
+    conn.query(insertSql,[json.room_id,json.room_name,json.owner_id,json.nickname,json.online,json.fans,"ingkee"],function (err, rows) {
         if (err){
             // return console.log(err);
         }
