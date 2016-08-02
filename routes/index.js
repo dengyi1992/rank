@@ -157,7 +157,7 @@ router.post('/dmIngkee', function (req, res, next) {
 
 });
 router.post('/spforIngkee',function (req, res, next) {
-    InsertRoom.InsertIngkeeRoom("ingkee", req.body);
+    InsertRoom.InsertIngkeeRoom(req.body);
     res.json({msg: 'success'});
 });
 
