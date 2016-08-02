@@ -12,7 +12,7 @@ var dmyy = require('../models/danmuyy');
 var danmuLZ = require('../models/danmulz');
 var danmuLF = require('../models/danmu_laifeng');
 var danmuIK = require('../models/danmu_ingkee');
-
+var EMC=require('../models/EMC');
 var ReadDB = require('../models/readDB');
 
 var router = express.Router();
@@ -167,6 +167,7 @@ router.get('/getRooms', function (req, res, next) {
     })
 });
 router.get('/emcUpdate', function (req, res, next) {
+    EMC.emcUpdate();
     res.json({msg: 'success'});
 });
 // router.get('/test1',function (req, res, next) {
