@@ -166,6 +166,9 @@ router.get('/getRooms', function (req, res, next) {
         res.json({msg: 'success', data: rows})
     })
 });
+router.get('/emcUpdate', function (req, res, next) {
+    res.json({msg: 'success'});
+});
 // router.get('/test1',function (req, res, next) {
 //     // CreateBrief.startCreate();
 // });
