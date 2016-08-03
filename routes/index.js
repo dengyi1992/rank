@@ -153,12 +153,12 @@ router.post('/dmIngkee', function (req, res, next) {
     var roomId = req.query.room_id;
     console.log("ingkee: " + roomId);
     danmuIK.DanMuSave(roomId, req.body);
-    res.json({msg: 'success'});
+    res.json({msg: 'dmIngkee success'});
 
 });
 router.post('/spforIngkee',function (req, res, next) {
     InsertRoom.InsertIngkeeRoom(req.body);
-    res.json({msg: 'success'});
+    res.json({msg: 'spforIngkee success'});
 });
 
 router.get('/getRooms', function (req, res, next) {
@@ -166,7 +166,7 @@ router.get('/getRooms', function (req, res, next) {
         if (err) {
             return res.json({msg: 'err'});
         }
-        res.json({msg: 'success', data: rows})
+        res.json({msg: 'success', data: rows});
     })
 });
 router.get('/emcUpdate', function (req, res, next) {
