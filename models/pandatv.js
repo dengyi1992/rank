@@ -55,10 +55,10 @@ myEvents.on('insertDanMu', function (platform, roomId, body) {
          * msg.ctime
          * @type {number}
          */
-        var type = 0;
+        var type =item.type==1?0:1;
         var insertParams;
         var device_type = (item.data.from.__plat == 'pc_web') ? 0 : 1;
-        insertParams = [item.data.from.nickName, item.data.from.rid, item.data.content, item.data.from.level, item.type, device_type, new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
+        insertParams = [item.data.from.nickName, item.data.from.rid, item.data.content, item.data.from.level, type, device_type, new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
         values.push(insertParams);
     }
     conn.query(insertSql, [values], function (err, rows, field) {
