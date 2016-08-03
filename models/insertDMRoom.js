@@ -32,12 +32,12 @@ exports.InsertIngkeeRoom=function (json) {
         ' (`room_id` ,`room_name` ,`owner_id` ,`nickname` ,`online` ,`fans` ,`platform`) VALUES(?,?,?,?,?,?,?)';
     conn.query(sql,function (err, rows) {
         if (err){
-            // return console.log(err);
+            return console.log(err);
         }
     });
     conn.query(insertSql,[json.room_id,json.room_name,json.owner_id,json.nickname,json.online,json.fans,"ingkee"],function (err, rows) {
         if (err){
-            // return console.log(err);
+            return console.log(err);
         }
     })
 };
