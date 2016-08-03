@@ -64,9 +64,9 @@ myEvents.on('insertDanMu', function (platform, roomId, body) {
         var insertParams;
         try {
             if (0 == item1.to) {
-                insertParams = [item2.nic, item.userid, item1.c, item2.lvl, 'message', 1, new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
+                insertParams = [item2.nic, item.userid, item1.c, item2.lvl, 0, 1, new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
             }else {
-                insertParams = [item2.nic,item.userid,item1.c,item2.lvl,'gift',1,new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
+                insertParams = [item2.nic,item.userid,item1.c,item2.lvl,1,1,new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
             }
         } catch (e) {
             console.log('data error' + e);

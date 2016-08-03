@@ -58,22 +58,22 @@ myEvents.on('insertDanMu', function (platform, roomId, body) {
         var insertParams;
         switch (item.name) {
             case "enterMessage":
-                insertParams = [item2.n, item1.uid, 'WELCOME', item2.l, 'enterMessage', item2.s, new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
+                insertParams = [item2.n, item1.uid, 'WELCOME', item2.l, 2, item2.s, new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
                 break;
             case "chatMessage":
-                insertParams = [item2.n, item1.uid, item2.m, item2.l, 'chatMessage', item2.al, new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
+                insertParams = [item2.n, item1.uid, item2.m, item2.l, 0, item2.al, new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
                 break;
             case "sendStar":
-                insertParams = [item2.n, item2.tq, item2.gd, item2.l, 'sendStar', item2.q, new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
+                insertParams = [item2.n, item2.tq, item2.gd, item2.l, 1, item2.q, new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
                 break;
             case "sendBigGift":
-                insertParams = [item2.n, item2.rm, item2.tt, item2.l, 'sendBigGift', item2.gd, new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
+                insertParams = [item2.n, item2.rm, item2.tt, item2.l, 1, item2.gd, new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
                 break;
             case "globalHornMessage":
-                insertParams = [item2.n, item2.ar, item2.m, item2.l, 'globalHornMessage', item2.g, new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
+                insertParams = [item2.n, item2.ar, item2.m, item2.l, 1, item2.g, new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
                 break;
             case "sendGift":
-                insertParams = [item2.n, item2.ti, item2.gd, item2.l, 'sendGift', item2.al, new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
+                insertParams = [item2.n, item2.ti, item2.gd, item2.l, 1, item2.al, new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
                 break;
             default:
                 break;

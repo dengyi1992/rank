@@ -47,13 +47,13 @@ myEvents.on('insertDanMu', function (platform,roomId,body) {
         var type=0;
         switch (item.type){
             case 'chatmsg':
-                type=1;
+                type=0;
                 break;
             case 'spbc':
-                type=2;
+                type=1;
                 break;
             case 'uenter':
-                type=0;
+                type=2;
                 break; 
         }
         var insertParams = [item.nn, item.uid, item.txt, item.level,type,item.ct,new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];

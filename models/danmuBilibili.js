@@ -49,13 +49,13 @@ myEvents.on('insertDanMu', function (platform,roomId,body) {
         var insertParams;
         switch (item.cmd){
             case 'DANMU_MSG':
-                insertParams= [item.info[2][1], item.info[2][0], item.info["1"], item.info[4][0],1,0,new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
+                insertParams= [item.info[2][1], item.info[2][0], item.info["1"], item.info[4][0],0,0,new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
                 break;
             case 'SEND_GIFT':
-                insertParams= [item.data.uname, item.data.uid, item.data.giftName, 0,2,0,new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
+                insertParams= [item.data.uname, item.data.uid, item.data.giftName, 1,2,0,new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
                 break;
             case 'WELCOME':
-                insertParams= [item.data.uname, item.data.uid, 'WELCOME', item.data.vip,0,0,new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
+                insertParams= [item.data.uname, item.data.uid, 'WELCOME', item.data.vip,2,0,new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
                 break; 
         }
         values.push(insertParams)
