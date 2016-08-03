@@ -166,7 +166,7 @@ router.get('/getRooms', function (req, res, next) {
         if (err) {
             return res.json({msg: 'err'});
         }
-        res.json({msg: 'success', data: rows})
+        res.json({msg: 'success', data: rows});
     })
 });
 router.get('/emcUpdate', function (req, res, next) {
