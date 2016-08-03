@@ -55,6 +55,8 @@ myEvents.on('insertDanMu', function (platform, roomId, body) {
             case "gift":
                 insertParams = [item.msg.user.username, item.msg.user.uid, item.msg.itemType, item.msg.user.grade, 1, 0, new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
                 break;
+            case "userjoin":
+                insertParams = [item.msg.username, item.msg.uid, "enter", item.msg.grade, 2, 0, new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
             default:
                 break;
             
