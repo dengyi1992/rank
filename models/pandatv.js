@@ -30,7 +30,7 @@ Date.prototype.format = function (format) {
     return format;
 };
 exports.DanMuSave = function (roomId, body) {
-    myEvents.emit('insertDanMu', 'pandatv', roomId, body);
+    myEvents.emit('insertDanMu', 'panda', roomId, body);
 };
 myEvents.on('insertDanMu', function (platform, roomId, body) {
     var tablename = platform + '_' + roomId + '_chat_' + TimeUtils.GetCrruentTime();
