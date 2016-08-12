@@ -13,7 +13,8 @@ var danmuLZ = require('../models/danmulz');
 var danmuLF = require('../models/danmu_laifeng');
 var danmuIK = require('../models/danmu_ingkee');
 var danmuSix = require('../models/danmu_sixrooms');
-var EMC=require('../models/EMC');
+var danmuHuya = require('../models/danmu_huya');
+var EMC = require('../models/EMC');
 var ReadDB = require('../models/readDB');
 
 var router = express.Router();
@@ -168,7 +169,16 @@ router.post('/dmSixrooms', function (req, res, next) {
 
 });
 
-router.post('/spforIngkee',function (req, res, next) {
+router.post('/dmHuya', function (req, res, next) {
+    var roomId = req.body.roomid;
+    // console.log("huya: " + roomId);
+    danmuHuya.DanMuSave(roomId, req.body.data);
+    InsertRoom.InsertRoom("huya", roomId);
+    res.json({msg: 'dmHuya success'});
+
+});
+
+router.post('/spforIngkee', function (req, res, next) {
     InsertRoom.InsertIngkeeRoom(req.body);
     res.json({msg: 'spforIngkee success'});
 });
