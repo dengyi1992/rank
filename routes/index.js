@@ -155,7 +155,7 @@ router.post('/dmIngkee', function (req, res, next) {
     var roomId = req.query.room_id;
     console.log("ingkee: " + roomId);
     danmuIK.DanMuSave(roomId, req.body);
-    // InsertRoom.InsertRoom("ingkee", roomId);
+    InsertRoom.InsertRoom("ingkee", roomId);
     res.json({msg: 'dmIngkee success'});
 
 });
