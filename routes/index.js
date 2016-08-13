@@ -171,7 +171,7 @@ router.post('/dmSixrooms', function (req, res, next) {
 
 router.post('/dmHuya', function (req, res, next) {
     var roomId = req.body.roomid;
-    // console.log("huya: " + roomId);
+    console.log("huya: " + roomId);
     danmuHuya.DanMuSave(roomId, req.body.data);
     InsertRoom.InsertRoom("huya", roomId);
     res.json({msg: 'dmHuya success'});
@@ -194,6 +194,26 @@ router.get('/getRooms', function (req, res, next) {
 router.get('/emcUpdate', function (req, res, next) {
     EMC.emcUpdate();
     res.json({msg: 'success'});
+});
+
+router.post('/insertCR',function (req, res, next) {
+    var platform = req.body.platform;
+    InsertRoom.InsertSpecialRoom(platform, req.body.rooms);
+
+    // console.log("platform: " + platform);
+    res.json({msg: 'insert success'});
+
+    // res.json({msg: 'success',rooms: req.body.rooms});
+});
+
+router.get('/insertCR',function (req, res, next) {
+    var platform = req.query.platform;
+    // InsertRoom.InsertRoom(platform, req.body.rooms);
+
+    console.log("platform: " + platform);
+    res.json({msg: 'success'});
+
+    // res.json({msg: 'success',rooms: req.body.rooms});
 });
 // router.get('/test1',function (req, res, next) {
 //     // CreateBrief.startCreate();
