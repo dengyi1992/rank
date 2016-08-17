@@ -205,16 +205,6 @@ router.post('/insertCR',function (req, res, next) {
 
     // res.json({msg: 'success',rooms: req.body.rooms});
 });
-
-router.get('/insertCR',function (req, res, next) {
-    var platform = req.query.platform;
-    // InsertRoom.InsertRoom(platform, req.body.rooms);
-
-    console.log("platform: " + platform);
-    res.json({msg: 'success'});
-
-    // res.json({msg: 'success',rooms: req.body.rooms});
-});
 // router.get('/test1',function (req, res, next) {
 //     // CreateBrief.startCreate();
 // });
