@@ -137,7 +137,7 @@ router.post('/dmLaiFeng', function (req, res, next) {
     var roomId = req.query.room_id;
     console.log("laifeng: " + roomId);
     danmuLF.DanMuSave(roomId, req.body);
-    // InsertRoom.InsertRoom("laifeng", roomId);
+    InsertRoom.InsertRoom("laifeng", roomId);
     res.json({msg: 'success'});
 
 });
@@ -164,7 +164,7 @@ router.post('/dmSixrooms', function (req, res, next) {
     var roomId = req.query.room_id;
     console.log("sixrooms: " + roomId);
     danmuSix.DanMuSave(roomId, req.body);
-    // InsertRoom.InsertRoom("sixrooms", roomId);
+    InsertRoom.InsertRoom("sixrooms", roomId);
     res.json({msg: 'dmSixrooms success'});
 
 });
