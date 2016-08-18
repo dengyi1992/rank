@@ -181,8 +181,8 @@ router.post('/dmHuya', function (req, res, next) {
 router.post('/dmHuajiao', function (req, res, next) {
     console.log("hujiao: " + req.body.roomid);
     danmuHJ.DanMuSave(req.body.roomid, req.body.data);
-    InsertRoom.InsertRoom("huya", roomId);
-    res.json({msg: 'dmHuya success'});
+    InsertRoom.InsertRoom("hujiao", roomId);
+    res.json({msg: 'hujiao success'});
 
 });
 router.post('/spforIngkee', function (req, res, next) {

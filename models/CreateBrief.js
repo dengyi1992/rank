@@ -59,6 +59,63 @@ myEvents.on('RankMonth', function () {
     UtilsCreateBriefTable.copyTableToRankMonth();
     myEvents.emit('phpUpdate');
 });
+var tablesupdate = ['bilibli', 'douyu', 'huya', 'laifeng', 'longzhu', 'panda', 'sixrooms', 'yy', 'ingkee'];
+function update_chat_month() {
+    request('http://rank2.dataguiding.com/Home/NewTable/update_chat_month', function (error, response, body) {
+            if (error) {
+                return console.log(error)
+            }
+            update_anchor_table();
+        }
+    );
+}
+function update_anchor_table() {
+    request('http://rank2.dataguiding.com/Home/NewTable/update_anchor_table', function (error, response, body) {
+            if (error) {
+                return console.log(error)
+            }
+            update_platform_table();
+        }
+    );
+}
+function update_platform_table() {
+    request('http://rank2.dataguiding.com/Home/NewTable/update_platform_table', function (error, response, body) {
+            if (error) {
+                return console.log(error)
+            }
+            update_total();
+        }
+    );
+}
+function update_total() {
+    request('http://rank2.dataguiding.com/Home/NewTable/update_total', function (error, response, body) {
+            if (error) {
+                return console.log(error)
+            }
+        }
+    );
+}
+myEvents.o('zhang', function () {
+    update_chat_month();
+});
+myEvents.on('xiaozhang', function () {
+    var k = 0;
+    schedule.scheduleJob(rule, function () {
+        if (k >= tablesupdate.length) {
+            k = 0;
+            myEvents.emit("zhang");
+            this.cancel();
+            return;
+        }
+        request('http://rank2.dataguiding.com/Home/NewTable/update_' + tablesupdate[k] + '_chat', function (error, response, body) {
+                if (error) {
+                    return console.log(error)
+                }
+            }
+        );
+        k++;
+    });
+});
 myEvents.on('phpUpdate', function () {
     request('http://120.27.94.166/ranknew/index.php/Home/MainPage/anchor_rank_hour_deal', function (error, response, body) {
             if (error) {
@@ -109,6 +166,7 @@ myEvents.on('phpUpdate', function () {
 
         }
     );
+    myEvents.emit('xiaozhang');
 
 });
 
