@@ -95,7 +95,7 @@ function update_total() {
         }
     );
 }
-myEvents.o('zhang', function () {
+myEvents.on('zhang', function () {
     update_chat_month();
 });
 myEvents.on('xiaozhang', function () {
