@@ -14,7 +14,7 @@ var danmuLF = require('../models/danmu_laifeng');
 var danmuIK = require('../models/danmu_ingkee');
 var danmuSix = require('../models/danmu_sixrooms');
 var danmuHuya = require('../models/danmu_huya');
-var danmuHJ=require('../models/danmu_huajiao');
+var danmuHJ = require('../models/danmu_huajiao');
 var EMC = require('../models/EMC');
 var ReadDB = require('../models/readDB');
 
@@ -153,7 +153,7 @@ router.post('/dmLZ', function (req, res, next) {
 });
 
 router.post('/dmIngkee', function (req, res, next) {
-    var roomId = req.query.room_id;
+    var roomId = req.query.room_id;//1475893971114354uid=7418335
     console.log("ingkee: " + roomId);
     danmuIK.DanMuSave(roomId, req.body);
     InsertRoom.InsertRoom("ingkee", roomId);
@@ -173,7 +173,7 @@ router.post('/dmSixrooms', function (req, res, next) {
 router.post('/dmHuya', function (req, res, next) {
     var roomId = req.body.roomid;
     console.log("huya: " + roomId);
-    danmuHuya.DanMuSave(roomId, req.body.data);9+9
+    danmuHuya.DanMuSave(roomId, req.body.data);
     InsertRoom.InsertRoom("huya", roomId);
     res.json({msg: 'dmHuya success'});
 
@@ -185,8 +185,9 @@ router.post('/dmHuajiao', function (req, res, next) {
     res.json({msg: 'hujiao success'});
 
 });
-router.post('/spforIngkee', function (req, res, next) {
-    InsertRoom.InsertIngkeeRoom(req.body);
+router.post('/spforIngkee', function (req, res, next) {//req.query.room_id
+    InsertRoom.InsertIngkeeRoom(req.query.room_id, req.query.uid, req.query.title, req.query.nick, req.query.fans);
+    danmuIK.DanMuSave(req.query.room_id, req.body);
     res.json({msg: 'spforIngkee success'});
 });
 
@@ -203,7 +204,7 @@ router.get('/emcUpdate', function (req, res, next) {
     res.json({msg: 'success'});
 });
 
-router.post('/insertCR',function (req, res, next) {
+router.post('/insertCR', function (req, res, next) {
     var platform = req.body.platform;
     InsertRoom.InsertSpecialRoom(platform, req.body.rooms);
 

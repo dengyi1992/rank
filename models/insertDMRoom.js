@@ -24,6 +24,25 @@ exports.InsertRoom = function (platform, roomid) {
 
 
 };
+/**
+ exports.InsertIngkeeRoom = function (platform, roomid) {
+    var tablename = 'chat_' + platform + '_' + TimeUtils.GetCrruentTime();
+    var sql = 'CREATE TABLE IF NOT EXISTS ' + tablename + ' LIKE chat_douyu_tpl ; ';
+    var insertSql = 'REPLACE INTO ' + tablename +
+        ' (`room_id` ) VALUES(?)';
+    conn.query(sql, function (err, rows) {
+        if (err) {
+            // return console.log(err);
+        }
+    });
+    conn.query(insertSql, [roomid], function (err, rows) {
+        if (err) {
+            // return console.log(err);
+        }
+    })
+
+
+};*/
 
 exports.InsertSpecialRoom = function (platform, roomid) {
     var tablename = 'chat_' + platform + '_' + TimeUtils.GetCrruentTime();
@@ -50,17 +69,17 @@ exports.InsertSpecialRoom = function (platform, roomid) {
 
 };
 
-exports.InsertIngkeeRoom = function (json) {
+exports.InsertIngkeeRoom = function (room_id, uid, title, nick, fans) {
     var tablename = 'chat_ingkee_' + TimeUtils.GetCrruentTime();
     var sql = 'CREATE TABLE IF NOT EXISTS ' + tablename + ' LIKE chat_douyu_tpl ; ';
     var insertSql = 'replace INTO ' + tablename +
-        ' (`room_id` ,`room_name` ,`owner_id` ,`nickname` ,`online` ,`fans` ,`platform`) VALUES(?,?,?,?,?,?,?)';
+        ' (`room_id` ,`room_name` ,`owner_id` ,`nickname`,`fans` ,`platform`) VALUES(?,?,?,?,?,?)';
     conn.query(sql, function (err, rows) {
         if (err) {
             return console.log(err);
         }
     });
-    conn.query(insertSql, [json.room_id, json.room_name, json.owner_id, json.nickname, json.online, json.fans, "ingkee"], function (err, rows) {
+    conn.query(insertSql, [room_id, title, uid, nick, fans, "ingkee"], function (err, rows) {
         if (err) {
             return console.log(err);
         }

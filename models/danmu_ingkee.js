@@ -45,35 +45,40 @@ myEvents.on('insertDanMu', function (platform, roomId, body) {
     var values = [];
     for (var i = 0; i < body.data.length; i++) {
         var item = body.data[i];
-        var item1 = item.ms["0"];
-        var item2 = item1.from;
+        var item1 = item.ms[0].from;
+        var insertParams;
+        switch (item.dest) {
+            case 2:
+                insertParams = [item1.nic, item1.id, item.c, item1.lvl, 0, 1, new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
+            case 3:
+                insertParams = [item1.nic, item1.id, item.c, item1.lvl, 1, 1, new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
+        }
 
         /**body.data["20"].name
          * body.data["0"].ms["0"].n
          body.data["0"].ms["0"].to
-         body.data["0"].ctime
-         body.data["1"].ms["0"].c
-         body.data["1"].ms["0"].tp
-         body.data["1"].userid
-         body.data["3"].ms["0"].from.lvl
-         body.data["3"].ms["0"].from.nic
-
          * @type {number}
-         */
-        var type = 0;
-        var insertParams;
-        try {
+
+         var type = 0;
+         var insertParams;
+         try {
             if (0 == item1.to) {
                 insertParams = [item2.nic, item.userid, item1.c, item2.lvl, 0, 1, new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
-            }else {
-                insertParams = [item2.nic,item.userid,item1.c,item2.lvl,1,1,new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
+            } else {
+                insertParams = [item2.nic, item.userid, item1.c, item2.lvl, 1, 1, new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
             }
         } catch (e) {
             console.log('data error' + e);
         }
-        
+         */
         // var device_type = (item.data.from.__plat == 'pc_web') ? 0 : 1;
-        // insertParams = [item.data.from.nickName, item.data.from.rid, item.data.content, item.data.from.level, item.type, device_type, new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
+        // insertParams = [item.data.from.nickName, item.data.from.rid, item.data.content, item.data.from.level, item.type, 
+        // 
+
+
+        // 
+        // 
+        // , new Date(item.ctime).format("yyyy-MM-dd hh:mm:ss")];
         values.push(insertParams);
     }
     conn.query(insertSql, [values], function (err, rows, field) {
