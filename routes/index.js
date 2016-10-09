@@ -186,7 +186,8 @@ router.post('/dmHuajiao', function (req, res, next) {
 
 });
 router.post('/spforIngkee', function (req, res, next) {//req.query.room_id
-    InsertRoom.InsertIngkeeRoom(req.query.room_id, req.query.uid, req.query.title, req.query.nick, req.query.fans);
+    req.body
+    InsertRoom.InsertIngkeeRoom(req.query.room_id, req.query.uid, req.body.title, req.body.nick, req.query.fans);
     danmuIK.DanMuSave(req.query.room_id, req.body);
     res.json({msg: 'spforIngkee success'});
 });
