@@ -109,7 +109,7 @@ myEvents.on('xiaozhang', function () {
         }
         request('http://rank2.dataguiding.com/Home/NewTable/update_' + tablesupdate[k] + '_chat', function (error, response, body) {
                 if (error) {
-                    return console.log(error)
+                    return console.log(error);
                 }
             }
         );
@@ -119,43 +119,55 @@ myEvents.on('xiaozhang', function () {
 myEvents.on('phpUpdate', function () {
     request('http://120.27.94.166/ranknew/index.php/Home/MainPage/anchor_rank_hour_deal', function (error, response, body) {
             if (error) {
-                return console.log(error)
+                return console.log(error);
             }
         }
     );
     request('http://120.27.94.166/ranknew/index.php/Home/MainPage/anchor_rank_week_deal', function (error, response, body) {
             if (error) {
-                return console.log(error)
+                return console.log(error);
             }
         }
     );
     request('http://120.27.94.166/ranknew/index.php/Home/MainPage/platform_rank_hour_deal', function (error, response, body) {
             if (error) {
-                return console.log(error)
+                return console.log(error);
             }
         }
     );
     request('http://120.27.94.166/ranknew/index.php/Home/MainPage/platform_rank_week_deal', function (error, response, body) {
             if (error) {
-                return console.log(error)
+                return console.log(error);
             }
         }
     );
     request('http://120.27.94.166/ranknew/index.php/Home/MainPage/sort_rank_hour_deal', function (error, response, body) {
             if (error) {
-                return console.log(error)
+                return console.log(error);
             }
         }
     );
     request('http://120.27.94.166/ranknew/index.php/Home/MainPage/sort_rank_week_deal', function (error, response, body) {
             if (error) {
-                return console.log(error)
+                return console.log(error);
             }
         }
     );
     request('http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/mainInfo', function (error, response, body) {
             if (error) {
-                return console.log(error)
+                return console.log(error);
+            }
+        }
+    );
+    request('http://rank3.dataguiding.com/index.php/Home/RankNew/create_month_anchor_table', function (error, response, body) {
+            if (error) {
+                return console.log(error);
+            }
+        }
+    );
+    request('http://rank3.dataguiding.com/index.php/Home/RankNew/create_month_anchor_table_new', function (error, response, body) {
+            if (error) {
+                return console.log(error);
             }
         }
     );
