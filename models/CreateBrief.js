@@ -159,18 +159,24 @@ myEvents.on('phpUpdate', function () {
             }
         }
     );
-    request('http://rank3.dataguiding.com/index.php/Home/RankNew/create_month_anchor_table', function (error, response, body) {
-            if (error) {
-                return console.log(error);
-            }
-        }
-    );
-    request('http://rank3.dataguiding.com/index.php/Home/RankNew/create_month_anchor_table_new', function (error, response, body) {
-            if (error) {
-                return console.log(error);
-            }
-        }
-    );
+
+    var create_month_anchor_table = {
+        method: 'POST',
+        url: 'http://rank3.dataguiding.com/index.php/Home/RankNew/create_month_anchor_table'
+    };
+
+    request(create_month_anchor_table, function (error, response, body) {
+        if (error) return console.log(error);
+    });
+    var create_month_anchor_table_new = {
+        method: 'POST',
+        url: 'http://rank3.dataguiding.com/index.php/Home/RankNew/create_month_anchor_table_new'
+    };
+
+    request(create_month_anchor_table_new, function (error, response, body) {
+        if (error) return console.log(error);
+    });
+
     // request('http://rank2.dataguiding.com/Home/NewTable/create_final_table', function (error, response, body) {
     //         if (error) {
     //             return console.log(error)
