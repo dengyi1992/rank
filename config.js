@@ -21,9 +21,9 @@ var config = {
     }*/
 
    db:{
-       host: 'rm-2zee5eu70c10m7ubu.mysql.rds.aliyuncs.com',
+       host: 'rm-2zeuwkk3t1j08a832.mysql.rds.aliyuncs.com',
        user: 'dataguiding',
-       password: 'redhat2016',
+       password: 'redhat@2016',
        database: 'rank',
        port: 3306
    }
