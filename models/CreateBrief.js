@@ -5,7 +5,8 @@ var request = require('request');
 var EventEmitter = require('events').EventEmitter;
 var myEvents = new EventEmitter();
 var rule = new schedule.RecurrenceRule();
-rule.second = 0;
+rule.minute = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55];
+// rule.second = 0;
 var tables = ['bilibli', 'douyu', 'huajiao', 'huya', 'laifeng', 'longzhu', 'panda', 'sixrooms', 'yy', 'ingkee'];
 exports.startCreate = function () {
     var i = 0;
@@ -117,48 +118,48 @@ myEvents.on('xiaozhang', function () {
     });
 });
 myEvents.on('phpUpdate', function () {
-    request('http://120.27.94.166/ranknew/index.php/Home/MainPage/anchor_rank_hour_deal', function (error, response, body) {
-            if (error) {
-                return console.log(error);
-            }
-        }
-    );
-    request('http://120.27.94.166/ranknew/index.php/Home/MainPage/anchor_rank_week_deal', function (error, response, body) {
-            if (error) {
-                return console.log(error);
-            }
-        }
-    );
-    request('http://120.27.94.166/ranknew/index.php/Home/MainPage/platform_rank_hour_deal', function (error, response, body) {
-            if (error) {
-                return console.log(error);
-            }
-        }
-    );
-    request('http://120.27.94.166/ranknew/index.php/Home/MainPage/platform_rank_week_deal', function (error, response, body) {
-            if (error) {
-                return console.log(error);
-            }
-        }
-    );
-    request('http://120.27.94.166/ranknew/index.php/Home/MainPage/sort_rank_hour_deal', function (error, response, body) {
-            if (error) {
-                return console.log(error);
-            }
-        }
-    );
-    request('http://120.27.94.166/ranknew/index.php/Home/MainPage/sort_rank_week_deal', function (error, response, body) {
-            if (error) {
-                return console.log(error);
-            }
-        }
-    );
-    request('http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/mainInfo', function (error, response, body) {
-            if (error) {
-                return console.log(error);
-            }
-        }
-    );
+    // request('http://120.27.94.166/ranknew/index.php/Home/MainPage/anchor_rank_hour_deal', function (error, response, body) {
+    //         if (error) {
+    //             return console.log(error);
+    //         }
+    //     }
+    // );
+    // request('http://120.27.94.166/ranknew/index.php/Home/MainPage/anchor_rank_week_deal', function (error, response, body) {
+    //         if (error) {
+    //             return console.log(error);
+    //         }
+    //     }
+    // );
+    // request('http://120.27.94.166/ranknew/index.php/Home/MainPage/platform_rank_hour_deal', function (error, response, body) {
+    //         if (error) {
+    //             return console.log(error);
+    //         }
+    //     }
+    // );
+    // request('http://120.27.94.166/ranknew/index.php/Home/MainPage/platform_rank_week_deal', function (error, response, body) {
+    //         if (error) {
+    //             return console.log(error);
+    //         }
+    //     }
+    // );
+    // request('http://120.27.94.166/ranknew/index.php/Home/MainPage/sort_rank_hour_deal', function (error, response, body) {
+    //         if (error) {
+    //             return console.log(error);
+    //         }
+    //     }
+    // );
+    // request('http://120.27.94.166/ranknew/index.php/Home/MainPage/sort_rank_week_deal', function (error, response, body) {
+    //         if (error) {
+    //             return console.log(error);
+    //         }
+    //     }
+    // );
+    // request('http://120.27.94.166/ranknew/index.php/Home/CrawlerInfo/mainInfo', function (error, response, body) {
+    //         if (error) {
+    //             return console.log(error);
+    //         }
+    //     }
+    // );
 
     var create_month_anchor_table = {
         method: 'POST',
