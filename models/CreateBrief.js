@@ -62,7 +62,7 @@ myEvents.on('RankMonth', function () {
 });
 var tablesupdate = ['bilibli', 'douyu', 'huya', 'laifeng', 'longzhu', 'panda', 'sixrooms', 'yy', 'ingkee'];
 function update_chat_month() {
-    request('http://rank2.dataguiding.com/Home/NewTable/update_chat_month', function (error, response, body) {
+    request('http://rank3.dataguiding.com/Home/NewTable/update_chat_month', function (error, response, body) {
             if (error) {
                 return console.log(error)
             }
@@ -71,7 +71,7 @@ function update_chat_month() {
     );
 }
 function update_anchor_table() {
-    request('http://rank2.dataguiding.com/Home/NewTable/update_anchor_table', function (error, response, body) {
+    request('http://rank3.dataguiding.com/Home/NewTable/update_anchor_table', function (error, response, body) {
             if (error) {
                 return console.log(error)
             }
@@ -80,7 +80,7 @@ function update_anchor_table() {
     );
 }
 function update_platform_table() {
-    request('http://rank2.dataguiding.com/Home/NewTable/update_platform_table', function (error, response, body) {
+    request('http://rank3.dataguiding.com/Home/NewTable/update_platform_table', function (error, response, body) {
             if (error) {
                 return console.log(error)
             }
@@ -89,7 +89,7 @@ function update_platform_table() {
     );
 }
 function update_total() {
-    request('http://rank2.dataguiding.com/Home/NewTable/update_total', function (error, response, body) {
+    request('http://rank3.dataguiding.com/Home/NewTable/update_total', function (error, response, body) {
             if (error) {
                 return console.log(error)
             }
@@ -108,7 +108,7 @@ myEvents.on('xiaozhang', function () {
             this.cancel();
             return;
         }
-        request('http://rank2.dataguiding.com/Home/NewTable/update_' + tablesupdate[k] + '_chat', function (error, response, body) {
+        request('http://rank3.dataguiding.com/Home/NewTable/update_' + tablesupdate[k] + '_chat', function (error, response, body) {
                 if (error) {
                     return console.log(error);
                 }
@@ -178,7 +178,7 @@ myEvents.on('phpUpdate', function () {
         if (error) return console.log(error);
     });
 
-    // request('http://rank2.dataguiding.com/Home/NewTable/create_final_table', function (error, response, body) {
+    // request('http://rank3.dataguiding.com/Home/NewTable/create_final_table', function (error, response, body) {
     //         if (error) {
     //             return console.log(error)
     //         }
